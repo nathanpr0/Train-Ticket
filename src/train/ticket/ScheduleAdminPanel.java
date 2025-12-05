@@ -444,9 +444,11 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/compresskaru_logo ubd_50x50.png"))); // NOI18N
 
         jLabel19.setFont(new java.awt.Font("Inter 18pt Black", 1, 24)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(68, 68, 68));
         jLabel19.setText("UBD Express");
 
         jLabel20.setFont(new java.awt.Font("Inter 18pt Black", 1, 24)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(68, 68, 68));
         jLabel20.setText("Profile");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
