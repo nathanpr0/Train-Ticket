@@ -67,7 +67,7 @@ public class TrainSchedule extends javax.swing.JFrame {
         jLabel30.setFont(new java.awt.Font("Inter 18pt Black", 1, 14)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel30.setText("Admin Panel");
+        jLabel30.setText("Train Schedule");
 
         javax.swing.GroupLayout roundedPanel1Layout = new javax.swing.GroupLayout(roundedPanel1);
         roundedPanel1.setLayout(roundedPanel1Layout);
