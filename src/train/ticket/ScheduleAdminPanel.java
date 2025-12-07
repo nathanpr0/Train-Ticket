@@ -8,12 +8,18 @@ import train.ticket.components.RoundedBorder;
 import java.awt.*;
 import java.io.InputStream;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import train.ticket.databases.Koneksi;
+
 /**
  *
  * @author user
  */
 public class ScheduleAdminPanel extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ScheduleAdminPanel.class.getName());
 
     /**
@@ -37,23 +43,21 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         roundedPanel2 = new train.ticket.components.RoundedPanel();
         jLabel29 = new javax.swing.JLabel();
-        cbTrainNumber = new train.ticket.components.RoundedComboBox();
-        cbOrigin = new train.ticket.components.RoundedComboBox();
-        cbMachinist = new train.ticket.components.RoundedComboBox();
-        cbDestination = new train.ticket.components.RoundedComboBox();
-        cbCarriages = new train.ticket.components.RoundedComboBox();
-        cbDepatureTime = new train.ticket.components.RoundedComboBox();
-        cbClass = new train.ticket.components.RoundedComboBox();
+        cmbDestination = new train.ticket.components.RoundedComboBox();
+        cmbCarriages = new train.ticket.components.RoundedComboBox();
+        cmbClass = new train.ticket.components.RoundedComboBox();
         btnInput = new train.ticket.components.RoundedButton();
-        rtfPrice = new train.ticket.components.RoundedTextField();
+        txtPrice = new train.ticket.components.RoundedTextField();
         jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
+        txtMachinist = new train.ticket.components.RoundedTextField();
+        txtDepartureTime = new train.ticket.components.RoundedTextField();
+        txtTrainNumber = new train.ticket.components.RoundedTextField();
         roundedPanel1 = new train.ticket.components.RoundedPanel();
         jLabel30 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -70,6 +74,8 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        nav_booking = new train.ticket.components.RoundedButton();
+        nav_schedule = new train.ticket.components.RoundedButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,19 +108,27 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
             .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 16, Short.MAX_VALUE)
         );
 
-        cbTrainNumber.setBorder(null);
+        cmbDestination.setBackground(new java.awt.Color(68, 68, 68));
+        cmbDestination.setBorder(null);
+        cmbDestination.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jakarta", "Bogor", "Yogyakarta" }));
+        cmbDestination.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbDestinationActionPerformed(evt);
+            }
+        });
 
-        cbOrigin.setBorder(null);
+        cmbCarriages.setBackground(new java.awt.Color(68, 68, 68));
+        cmbCarriages.setBorder(null);
+        cmbCarriages.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11", "12", "13", "14", "15" }));
 
-        cbMachinist.setBorder(null);
-
-        cbDestination.setBorder(null);
-
-        cbCarriages.setBorder(null);
-
-        cbDepatureTime.setBorder(null);
-
-        cbClass.setBorder(null);
+        cmbClass.setBackground(new java.awt.Color(68, 68, 68));
+        cmbClass.setBorder(null);
+        cmbClass.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Economy", "Business", "Executive" }));
+        cmbClass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbClassActionPerformed(evt);
+            }
+        });
 
         btnInput.setBackground(new java.awt.Color(14, 173, 0));
         btnInput.setText("Confirm Input");
@@ -124,21 +138,18 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
             }
         });
 
-        rtfPrice.setBorder(null);
-        rtfPrice.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        rtfPrice.addActionListener(new java.awt.event.ActionListener() {
+        txtPrice.setEditable(false);
+        txtPrice.setBorder(null);
+        txtPrice.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rtfPriceActionPerformed(evt);
+                txtPriceActionPerformed(evt);
             }
         });
 
         jLabel21.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(68, 68, 68));
         jLabel21.setText("Train Number");
-
-        jLabel22.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel22.setText("Origin");
 
         jLabel23.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(68, 68, 68));
@@ -158,11 +169,35 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
 
         jLabel27.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel27.setText("Depature Time");
+        jLabel27.setText("Departure Time");
 
         jLabel28.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel28.setText("Class");
+        jLabel28.setText("Price");
+
+        txtMachinist.setBorder(null);
+        txtMachinist.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMachinist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMachinistActionPerformed(evt);
+            }
+        });
+
+        txtDepartureTime.setBorder(null);
+        txtDepartureTime.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDepartureTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDepartureTimeActionPerformed(evt);
+            }
+        });
+
+        txtTrainNumber.setBorder(null);
+        txtTrainNumber.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTrainNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTrainNumberActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -173,29 +208,27 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbTrainNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbOrigin, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbCarriages, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbClass, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbCarriages, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                            .addComponent(cmbClass, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                             .addComponent(jLabel21)
-                            .addComponent(jLabel22)
                             .addComponent(jLabel24)
                             .addComponent(jLabel23)
-                            .addComponent(roundedPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(roundedPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTrainNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(163, 163, 163)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbDestination, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbDepatureTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbMachinist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(rtfPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbDestination, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel26)
                                     .addComponent(jLabel27)
                                     .addComponent(jLabel25)
                                     .addComponent(jLabel28))
-                                .addGap(0, 139, Short.MAX_VALUE)))))
+                                .addGap(0, 139, Short.MAX_VALUE))
+                            .addComponent(txtMachinist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtDepartureTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(16, 16, 16))
         );
         jPanel3Layout.setVerticalGroup(
@@ -208,38 +241,34 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
                     .addComponent(jLabel21)
                     .addComponent(jLabel25))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbTrainNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbMachinist, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtMachinist, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTrainNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel22)
-                            .addComponent(jLabel26))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbOrigin, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel26))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(cbDestination, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10)
+                        .addComponent(cmbDestination, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbCarriages, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbCarriages, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel27)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbDepatureTime, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtDepartureTime, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
                     .addComponent(jLabel28))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbClass, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rtfPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnInput, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
@@ -446,6 +475,24 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/compresskaru_logo ubd_50x50.png"))); // NOI18N
         jLabel20.setText("Profile");
 
+        nav_booking.setBackground(new java.awt.Color(68, 68, 68));
+        nav_booking.setBorder(new RoundedBorder(20, new Color(68,68,68), 1));
+        nav_booking.setText("Booking Ticket");
+        nav_booking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nav_bookingActionPerformed(evt);
+            }
+        });
+
+        nav_schedule.setBackground(new java.awt.Color(68, 68, 68));
+        nav_schedule.setBorder(new RoundedBorder(20, new Color(68,68,68), 1));
+        nav_schedule.setText("Train Schedule");
+        nav_schedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nav_scheduleActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -453,13 +500,17 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel19)
+                .addGap(32, 32, 32)
+                .addComponent(nav_booking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(nav_schedule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel20)
                 .addGap(40, 40, 40))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -467,7 +518,11 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nav_booking, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nav_schedule, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -477,10 +532,10 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(270, 270, 270)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(267, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addGap(213, 213, 213))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -492,7 +547,95 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInputActionPerformed
-        // TODO add your handling code here:
+        try {
+
+            Connection conn = Koneksi.getConnection();
+
+            if (conn == null) {
+                JOptionPane.showMessageDialog(this, "Koneksi database gagal!");
+                return;
+            }
+
+            // DATA INPUT
+            String trainNumber = txtTrainNumber.getText();
+            String machinist = txtMachinist.getText();
+
+            // ORIGIN OTOMATIS
+            String origin = "Tangerang";
+
+            String destination = cmbDestination.getSelectedItem().toString();
+            String departure = txtDepartureTime.getText();
+            String kelas = cmbClass.getSelectedItem().toString();
+            int carriages = Integer.parseInt(cmbCarriages.getSelectedItem().toString());
+            int harga = Integer.parseInt(txtPrice.getText());
+
+            // VALIDASI
+            if (trainNumber.isEmpty() || machinist.isEmpty() || departure.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Data tidak boleh kosong!");
+                return;
+            }
+
+            if (origin.equals(destination)) {
+                JOptionPane.showMessageDialog(this, "Origin dan Destination tidak boleh sama!");
+                return;
+            }
+
+            // CEK BENTROK KERETA
+            String cekKereta = "SELECT * FROM schedule WHERE train_number=? AND departure_time=?";
+            PreparedStatement cek1 = conn.prepareStatement(cekKereta);
+            cek1.setString(1, trainNumber);
+            cek1.setString(2, departure);
+            ResultSet rs1 = cek1.executeQuery();
+
+            if (rs1.next()) {
+                JOptionPane.showMessageDialog(this,
+                        "JADWAL BENTROK!\nKereta ini sudah ada di jam tersebut.");
+                return;
+            }
+
+            // CEK BENTROK MASINIS
+            String cekMasinis = "SELECT * FROM schedule WHERE machinist=? AND departure_time=?";
+            PreparedStatement cek2 = conn.prepareStatement(cekMasinis);
+            cek2.setString(1, machinist);
+            cek2.setString(2, departure);
+            ResultSet rs2 = cek2.executeQuery();
+
+            if (rs2.next()) {
+                JOptionPane.showMessageDialog(this,
+                        "MASINIS BENTROK!\nMasinis ini sudah mengemudi di jam tersebut.");
+                return;
+            }
+
+            // INSERT DATABASE
+            String sql = "INSERT INTO schedule "
+                    + "(train_number, machinist, origin, destination, departure_time, carriages, class, price) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            pst.setString(1, trainNumber);
+            pst.setString(2, machinist);
+            pst.setString(3, origin);
+            pst.setString(4, destination);
+            pst.setString(5, departure);
+            pst.setInt(6, carriages);
+            pst.setString(7, kelas);
+            pst.setInt(8,harga);
+
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(this,
+                    "Schedule berhasil ditambahkan!\nOrigin otomatis : Tangerang");
+
+            // CLEAR FORM
+            txtTrainNumber.setText("");
+            txtMachinist.setText("");
+            txtDepartureTime.setText("");
+            txtPrice.setText("");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ERROR: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnInputActionPerformed
 
     private void btnIdDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIdDeleteActionPerformed
@@ -503,9 +646,9 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBookingDeleteActionPerformed
 
-    private void rtfPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rtfPriceActionPerformed
+    private void txtPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rtfPriceActionPerformed
+    }//GEN-LAST:event_txtPriceActionPerformed
 
     private void rtfPrice1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rtfPrice1ActionPerformed
         // TODO add your handling code here:
@@ -515,19 +658,81 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rtfPrice2ActionPerformed
 
+    private void nav_bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nav_bookingActionPerformed
+        new BookingMenu().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_nav_bookingActionPerformed
+
+    private void nav_scheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nav_scheduleActionPerformed
+        new TrainSchedule().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_nav_scheduleActionPerformed
+
+    private void txtMachinistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMachinistActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMachinistActionPerformed
+
+    private void txtDepartureTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDepartureTimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDepartureTimeActionPerformed
+
+    private void txtTrainNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTrainNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTrainNumberActionPerformed
+
+    // OTOMATIS PRICE LANGSUNG MUNCUL KETIKA COMBOBOX CLASS & DESTINATION DI PILIH
+    private void updatePrice() {
+
+        if (cmbClass.getSelectedItem() == null || cmbCarriages.getSelectedItem() == null) {
+            return;
+        }
+
+        String kelas = cmbClass.getSelectedItem().toString();
+        String destination = cmbDestination.getSelectedItem().toString();
+        int price = 0;
+
+        // MENENTUKAN HARGA TIKET BERDASARKAN CLASS
+        if (kelas.equals("Economy")) {
+            price = 3000;
+        } else if (kelas.equals("Business")) {
+            price = 5000;
+        } else if (kelas.equals("Executive")) {
+            price = 10000;
+        }
+        
+        if (destination.equals("Jakarta")){
+            price += 3000;
+        }else if (destination.equals("Bogor")){
+            price += 10000;
+        }else if (destination.equals("Yogyakarta")){
+            price += 15000;
+        }
+        
+        txtPrice.setText(String.valueOf(price));
+    }
+
+
+    private void cmbClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClassActionPerformed
+        updatePrice();
+    }//GEN-LAST:event_cmbClassActionPerformed
+
+    private void cmbDestinationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDestinationActionPerformed
+        updatePrice();
+    }//GEN-LAST:event_cmbDestinationActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    
     public Font loadInter(float size) {
-    try {
-        InputStream is = getClass().getResourceAsStream("/fonts/Inter-Regular.ttf");
-        return Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(size);
+        try {
+            InputStream is = getClass().getResourceAsStream("/fonts/Inter-Regular.ttf");
+            return Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(size);
         } catch (Exception e) {
-        e.printStackTrace();
-        return new Font("SansSerif", Font.PLAIN, (int) size);
+            e.printStackTrace();
+            return new Font("SansSerif", Font.PLAIN, (int) size);
         }
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -554,17 +759,12 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
     private train.ticket.components.RoundedButton btnBookingDelete;
     private train.ticket.components.RoundedButton btnIdDelete;
     private train.ticket.components.RoundedButton btnInput;
-    private train.ticket.components.RoundedComboBox cbCarriages;
-    private train.ticket.components.RoundedComboBox cbClass;
-    private train.ticket.components.RoundedComboBox cbDepatureTime;
-    private train.ticket.components.RoundedComboBox cbDestination;
-    private train.ticket.components.RoundedComboBox cbMachinist;
-    private train.ticket.components.RoundedComboBox cbOrigin;
-    private train.ticket.components.RoundedComboBox cbTrainNumber;
+    private train.ticket.components.RoundedComboBox cmbCarriages;
+    private train.ticket.components.RoundedComboBox cmbClass;
+    private train.ticket.components.RoundedComboBox cmbDestination;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
@@ -582,12 +782,17 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private train.ticket.components.RoundedButton nav_booking;
+    private train.ticket.components.RoundedButton nav_schedule;
     private train.ticket.components.RoundedPanel roundedPanel1;
     private train.ticket.components.RoundedPanel roundedPanel2;
     private train.ticket.components.RoundedPanel roundedPanel4;
     private train.ticket.components.RoundedPanel roundedPanel5;
-    private train.ticket.components.RoundedTextField rtfPrice;
     private train.ticket.components.RoundedTextField rtfPrice1;
     private train.ticket.components.RoundedTextField rtfPrice2;
+    private train.ticket.components.RoundedTextField txtDepartureTime;
+    private train.ticket.components.RoundedTextField txtMachinist;
+    private train.ticket.components.RoundedTextField txtPrice;
+    private train.ticket.components.RoundedTextField txtTrainNumber;
     // End of variables declaration//GEN-END:variables
 }

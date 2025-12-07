@@ -41,6 +41,8 @@ public class TrainSchedule extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        nav_booking = new train.ticket.components.RoundedButton();
+        nav_admin = new train.ticket.components.RoundedButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,6 +138,24 @@ public class TrainSchedule extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
+        nav_booking.setBackground(new java.awt.Color(68, 68, 68));
+        nav_booking.setBorder(new RoundedBorder(20, new Color(68,68,68), 1));
+        nav_booking.setText("Booking Ticket");
+        nav_booking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nav_bookingActionPerformed(evt);
+            }
+        });
+
+        nav_admin.setBackground(new java.awt.Color(68, 68, 68));
+        nav_admin.setBorder(new RoundedBorder(20, new Color(68,68,68), 1));
+        nav_admin.setText("Admin Panel");
+        nav_admin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nav_adminActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -145,6 +165,10 @@ public class TrainSchedule extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel19)
+                .addGap(243, 243, 243)
+                .addComponent(nav_booking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(nav_admin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -160,7 +184,11 @@ public class TrainSchedule extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nav_booking, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nav_admin, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,6 +218,16 @@ public class TrainSchedule extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nav_bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nav_bookingActionPerformed
+        new BookingMenu().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_nav_bookingActionPerformed
+
+    private void nav_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nav_adminActionPerformed
+        new ScheduleAdminPanel().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_nav_adminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,6 +264,8 @@ public class TrainSchedule extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private train.ticket.components.RoundedButton nav_admin;
+    private train.ticket.components.RoundedButton nav_booking;
     private train.ticket.components.RoundedPanel roundedPanel1;
     // End of variables declaration//GEN-END:variables
 }
