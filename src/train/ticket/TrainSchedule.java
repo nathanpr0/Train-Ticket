@@ -40,7 +40,7 @@ public class TrainSchedule extends javax.swing.JFrame {
         roundedPanel1 = new train.ticket.components.RoundedPanel();
         jLabel30 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        customTable1 = new train.ticket.components.CustomTable();
         nav_booking = new train.ticket.components.RoundedButton();
         nav_admin = new train.ticket.components.RoundedButton();
 
@@ -86,36 +86,9 @@ public class TrainSchedule extends javax.swing.JFrame {
             .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 13, Short.MAX_VALUE)
         );
 
-        jTable1.setFont(new java.awt.Font("Inter 18pt", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"SDF345", "1006DF", "Budi",  new Integer(10), "Jakarta", "Tangerang", "06:30", "Economy", "Rp. 3.000"},
-                {"SCH001", "1007DF", "Ari",  new Integer(10), "Jakarta", "Tangerang", "06:30", "Economy", "Rp. 3.000"},
-                {"SKE001", "1008DF", "Dedi",  new Integer(10), "Jakarta", "Tangerang", "06:30", "Economy", "Rp. 3.000"},
-                {"SOP001", "1009DF", "Eko",  new Integer(12), "Jakarta", "Tangerang", "06:30", "Business", "Rp. 5.000"},
-                {"SKW001", "1010DF", "Hidayat",  new Integer(12), "Jakarta", "Tangerang", "06:30", "Business", "Rp. 5.000"},
-                {"SUT001", "1011DF", "Romi",  new Integer(12), "Tangerang", "Jakarta", "06:30", "Business", "Rp.  5.000"},
-                {"PHT001", "1012DF", "Andri",  new Integer(8), "Tangerang", "Jakarta", "06:30", "Executive", "Rp. 10.000"},
-                {"PKQ001", "1013DF", "Raden",  new Integer(8), "Tangerang", "Jakarta", "06:30", "Executive", "Rp. 10.000"},
-                {"ULP001", "1014DF", "Robby",  new Integer(8), "Tangerang", "Jakarta", "06:30", "Executive", "Rp. 10.000"},
-                {"TRN001", "1015DF", "Nero",  new Integer(8), "Tangerang", "Jakarta", "06:30", "Executive", "Rp. 10.000"}
-            },
-            new String [] {
-                "Id Schedule", "Train Number", "Machinist", "Carriage", "Orgin", "Destination", "Depature Time", "Class", "Price"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setMaximumSize(new java.awt.Dimension(2101, 1154));
-        jTable1.setMinimumSize(new java.awt.Dimension(2101, 1154));
-        jTable1.setPreferredSize(new java.awt.Dimension(2101, 1154));
-        jScrollPane1.setViewportView(jTable1);
+        customTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(68, 68, 68)));
+        customTable1.setForeground(new java.awt.Color(68, 68, 68));
+        jScrollPane1.setViewportView(customTable1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -134,8 +107,8 @@ public class TrainSchedule extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(roundedPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         nav_booking.setBackground(new java.awt.Color(68, 68, 68));
@@ -165,7 +138,7 @@ public class TrainSchedule extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel19)
-                .addGap(243, 243, 243)
+                .addGap(18, 18, 18)
                 .addComponent(nav_booking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(nav_admin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -186,9 +159,8 @@ public class TrainSchedule extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nav_booking, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nav_admin, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(nav_booking, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nav_admin, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,7 +184,7 @@ public class TrainSchedule extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -255,6 +227,7 @@ public class TrainSchedule extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private train.ticket.components.CustomTable customTable1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
@@ -263,7 +236,6 @@ public class TrainSchedule extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private train.ticket.components.RoundedButton nav_admin;
     private train.ticket.components.RoundedButton nav_booking;
     private train.ticket.components.RoundedPanel roundedPanel1;
