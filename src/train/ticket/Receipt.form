@@ -268,7 +268,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Container class="train.ticket.RoundedPanel" name="roundedPanel1">
+            <Container class="train.ticket.components.RoundedPanel" name="roundedPanel1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="44" green="44" red="44" type="rgb"/>

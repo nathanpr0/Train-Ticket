@@ -95,23 +95,21 @@
                                   <Component id="jLabel20" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="jLabel19" alignment="0" pref="96" max="32767" attributes="0"/>
-                                      <Component id="RoundedButtonLogin" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="login_btn" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ulUsername" min="-2" pref="394" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="showHideButton" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="ulPasswordField" alignment="0" min="-2" pref="394" max="-2" attributes="0"/>
+                                  <Component id="input_username" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
+                                      <Component id="showHideButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="input_pw" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -134,16 +132,16 @@
                       <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                       <Component id="jLabel21" min="-2" pref="24" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="ulUsername" min="-2" max="-2" attributes="0"/>
+                      <Component id="input_username" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel22" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                           <Component id="showHideButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="ulPasswordField" min="-2" max="-2" attributes="0"/>
+                      <Component id="input_pw" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="153" max="32767" attributes="0"/>
-                      <Component id="RoundedButtonLogin" min="-2" max="-2" attributes="0"/>
+                      <Component id="login_btn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -191,7 +189,7 @@
                 <Property name="text" type="java.lang.String" value="Username :"/>
               </Properties>
             </Component>
-            <Component class="train.ticket.RoundedButton" name="RoundedButtonLogin">
+            <Component class="train.ticket.components.RoundedButton" name="login_btn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -204,8 +202,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Login"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="login_btnActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="train.ticket.UnderLineTextField" name="ulUsername">
+            <Component class="train.ticket.components.UnderLineTextField" name="input_username">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel22">
               <Properties>
@@ -218,14 +219,14 @@
                 <Property name="text" type="java.lang.String" value="Password :"/>
               </Properties>
             </Component>
-            <Component class="train.ticket.UnderLineTextField" name="ulPasswordField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ulPasswordFieldActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="train.ticket.ShowHideButton" name="showHideButton">
+            <Component class="train.ticket.components.ShowHideButton" name="showHideButton">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showHideButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="train.ticket.components.UnderLinePasswordField" name="input_pw">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="input_pwActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

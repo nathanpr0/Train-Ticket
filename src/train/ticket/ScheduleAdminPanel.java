@@ -4,6 +4,7 @@
  */
 package train.ticket;
 
+import train.ticket.components.RoundedBorder;
 import java.awt.*;
 import java.io.InputStream;
 
@@ -34,17 +35,17 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        roundedPanel2 = new train.ticket.RoundedPanel();
+        roundedPanel2 = new train.ticket.components.RoundedPanel();
         jLabel29 = new javax.swing.JLabel();
-        cbTrainNumber = new train.ticket.RoundedComboBox();
-        cbOrigin = new train.ticket.RoundedComboBox();
-        cbMachinist = new train.ticket.RoundedComboBox();
-        cbDestination = new train.ticket.RoundedComboBox();
-        cbCarriages = new train.ticket.RoundedComboBox();
-        cbDepatureTime = new train.ticket.RoundedComboBox();
-        cbClass = new train.ticket.RoundedComboBox();
-        btnInput = new train.ticket.RoundedButton();
-        rtfPrice = new train.ticket.RoundedTextField();
+        cbTrainNumber = new train.ticket.components.RoundedComboBox();
+        cbOrigin = new train.ticket.components.RoundedComboBox();
+        cbMachinist = new train.ticket.components.RoundedComboBox();
+        cbDestination = new train.ticket.components.RoundedComboBox();
+        cbCarriages = new train.ticket.components.RoundedComboBox();
+        cbDepatureTime = new train.ticket.components.RoundedComboBox();
+        cbClass = new train.ticket.components.RoundedComboBox();
+        btnInput = new train.ticket.components.RoundedButton();
+        rtfPrice = new train.ticket.components.RoundedTextField();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
@@ -53,19 +54,19 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        roundedPanel1 = new train.ticket.RoundedPanel();
+        roundedPanel1 = new train.ticket.components.RoundedPanel();
         jLabel30 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        roundedPanel4 = new train.ticket.RoundedPanel();
+        roundedPanel4 = new train.ticket.components.RoundedPanel();
         jLabel31 = new javax.swing.JLabel();
-        btnIdDelete = new train.ticket.RoundedButton();
-        rtfPrice1 = new train.ticket.RoundedTextField();
+        btnIdDelete = new train.ticket.components.RoundedButton();
+        rtfPrice1 = new train.ticket.components.RoundedTextField();
         jLabel32 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        roundedPanel5 = new train.ticket.RoundedPanel();
+        roundedPanel5 = new train.ticket.components.RoundedPanel();
         jLabel33 = new javax.swing.JLabel();
-        btnBookingDelete = new train.ticket.RoundedButton();
-        rtfPrice2 = new train.ticket.RoundedTextField();
+        btnBookingDelete = new train.ticket.components.RoundedButton();
+        rtfPrice2 = new train.ticket.components.RoundedTextField();
         jLabel34 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -550,16 +551,16 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private train.ticket.RoundedButton btnBookingDelete;
-    private train.ticket.RoundedButton btnIdDelete;
-    private train.ticket.RoundedButton btnInput;
-    private train.ticket.RoundedComboBox cbCarriages;
-    private train.ticket.RoundedComboBox cbClass;
-    private train.ticket.RoundedComboBox cbDepatureTime;
-    private train.ticket.RoundedComboBox cbDestination;
-    private train.ticket.RoundedComboBox cbMachinist;
-    private train.ticket.RoundedComboBox cbOrigin;
-    private train.ticket.RoundedComboBox cbTrainNumber;
+    private train.ticket.components.RoundedButton btnBookingDelete;
+    private train.ticket.components.RoundedButton btnIdDelete;
+    private train.ticket.components.RoundedButton btnInput;
+    private train.ticket.components.RoundedComboBox cbCarriages;
+    private train.ticket.components.RoundedComboBox cbClass;
+    private train.ticket.components.RoundedComboBox cbDepatureTime;
+    private train.ticket.components.RoundedComboBox cbDestination;
+    private train.ticket.components.RoundedComboBox cbMachinist;
+    private train.ticket.components.RoundedComboBox cbOrigin;
+    private train.ticket.components.RoundedComboBox cbTrainNumber;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -581,12 +582,12 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private train.ticket.RoundedPanel roundedPanel1;
-    private train.ticket.RoundedPanel roundedPanel2;
-    private train.ticket.RoundedPanel roundedPanel4;
-    private train.ticket.RoundedPanel roundedPanel5;
-    private train.ticket.RoundedTextField rtfPrice;
-    private train.ticket.RoundedTextField rtfPrice1;
-    private train.ticket.RoundedTextField rtfPrice2;
+    private train.ticket.components.RoundedPanel roundedPanel1;
+    private train.ticket.components.RoundedPanel roundedPanel2;
+    private train.ticket.components.RoundedPanel roundedPanel4;
+    private train.ticket.components.RoundedPanel roundedPanel5;
+    private train.ticket.components.RoundedTextField rtfPrice;
+    private train.ticket.components.RoundedTextField rtfPrice1;
+    private train.ticket.components.RoundedTextField rtfPrice2;
     // End of variables declaration//GEN-END:variables
 }

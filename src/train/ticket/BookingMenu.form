@@ -168,7 +168,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="train.ticket.RoundedPanel" name="roundedPanel11">
+            <Container class="train.ticket.components.RoundedPanel" name="roundedPanel11">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="44" green="44" red="44" type="rgb"/>
@@ -217,7 +217,7 @@
                 <Property name="text" type="java.lang.String" value="Booking Name"/>
               </Properties>
             </Component>
-            <Component class="train.ticket.RoundedComboBox" name="cbTrainNumber1">
+            <Component class="train.ticket.components.RoundedComboBox" name="cbTrainNumber1">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -246,7 +246,7 @@
                 <Property name="text" type="java.lang.String" value="Class"/>
               </Properties>
             </Component>
-            <Component class="train.ticket.RoundedComboBox" name="cbTrainNumber2">
+            <Component class="train.ticket.components.RoundedComboBox" name="cbTrainNumber2">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -264,7 +264,7 @@
                 <Property name="text" type="java.lang.String" value="Depature Time"/>
               </Properties>
             </Component>
-            <Component class="train.ticket.RoundedComboBox" name="cbTrainNumber3">
+            <Component class="train.ticket.components.RoundedComboBox" name="cbTrainNumber3">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -282,7 +282,7 @@
                 <Property name="text" type="java.lang.String" value="Price"/>
               </Properties>
             </Component>
-            <Component class="train.ticket.RoundedTextField" name="roundedTextField1">
+            <Component class="train.ticket.components.RoundedTextField" name="roundedTextField1">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new RoundedBorder(20, new Color(68,68,68), 1)" type="code"/>
@@ -297,7 +297,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roundedTextField1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="train.ticket.RoundedTextField" name="roundedTextField2">
+            <Component class="train.ticket.components.RoundedTextField" name="roundedTextField2">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new RoundedBorder(20, new Color(68,68,68), 1)" type="code"/>
@@ -369,7 +369,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="train.ticket.RoundedPanel" name="roundedPanel13">
+            <Container class="train.ticket.components.RoundedPanel" name="roundedPanel13">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="44" green="44" red="44" type="rgb"/>
@@ -689,7 +689,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="train.ticket.RoundedButton" name="roundedButton1">
+            <Component class="train.ticket.components.RoundedButton" name="roundedButton1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="44" green="44" red="44" type="rgb"/>
@@ -700,7 +700,7 @@
                 <Property name="text" type="java.lang.String" value="Confirm Booking"/>
               </Properties>
             </Component>
-            <Component class="train.ticket.RoundedButton" name="roundedButton2">
+            <Component class="train.ticket.components.RoundedButton" name="roundedButton2">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -719,7 +719,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="train.ticket.RoundedButton" name="roundedButton3">
+        <Component class="train.ticket.components.RoundedButton" name="roundedButton3">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="44" green="44" red="44" type="rgb"/>
@@ -894,7 +894,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="train.ticket.RoundedPanel" name="roundedPanel12">
+            <Container class="train.ticket.components.RoundedPanel" name="roundedPanel12">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="44" green="44" red="44" type="rgb"/>
@@ -1236,7 +1236,7 @@
                 <Property name="text" type="java.lang.String" value="-"/>
               </Properties>
             </Component>
-            <Component class="train.ticket.RoundedButton" name="roundedButton4">
+            <Component class="train.ticket.components.RoundedButton" name="roundedButton4">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="44" green="44" red="44" type="rgb"/>
@@ -1253,7 +1253,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="train.ticket.RoundedButton" name="roundedButton5">
+            <Component class="train.ticket.components.RoundedButton" name="roundedButton5">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1273,7 +1273,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="train.ticket.RoundedButton" name="roundedButton6">
+            <Component class="train.ticket.components.RoundedButton" name="roundedButton6">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>

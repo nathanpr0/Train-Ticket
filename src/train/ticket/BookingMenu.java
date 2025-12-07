@@ -4,6 +4,7 @@
  */
 package train.ticket;
 
+import train.ticket.components.RoundedBorder;
 import java.awt.*;
 
 /**
@@ -32,21 +33,21 @@ public class BookingMenu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
-        roundedPanel11 = new train.ticket.RoundedPanel();
+        roundedPanel11 = new train.ticket.components.RoundedPanel();
         jLabel45 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        cbTrainNumber1 = new train.ticket.RoundedComboBox();
+        cbTrainNumber1 = new train.ticket.components.RoundedComboBox();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        cbTrainNumber2 = new train.ticket.RoundedComboBox();
+        cbTrainNumber2 = new train.ticket.components.RoundedComboBox();
         jLabel24 = new javax.swing.JLabel();
-        cbTrainNumber3 = new train.ticket.RoundedComboBox();
+        cbTrainNumber3 = new train.ticket.components.RoundedComboBox();
         jLabel25 = new javax.swing.JLabel();
-        roundedTextField1 = new train.ticket.RoundedTextField();
-        roundedTextField2 = new train.ticket.RoundedTextField();
+        roundedTextField1 = new train.ticket.components.RoundedTextField();
+        roundedTextField2 = new train.ticket.components.RoundedTextField();
         jLabel19 = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
-        roundedPanel13 = new train.ticket.RoundedPanel();
+        roundedPanel13 = new train.ticket.components.RoundedPanel();
         jLabel46 = new javax.swing.JLabel();
         jPanel25 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
@@ -64,11 +65,11 @@ public class BookingMenu extends javax.swing.JFrame {
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        roundedButton1 = new train.ticket.RoundedButton();
-        roundedButton2 = new train.ticket.RoundedButton();
-        roundedButton3 = new train.ticket.RoundedButton();
+        roundedButton1 = new train.ticket.components.RoundedButton();
+        roundedButton2 = new train.ticket.components.RoundedButton();
+        roundedButton3 = new train.ticket.components.RoundedButton();
         jPanel2 = new javax.swing.JPanel();
-        roundedPanel12 = new train.ticket.RoundedPanel();
+        roundedPanel12 = new train.ticket.components.RoundedPanel();
         jLabel47 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
@@ -94,9 +95,9 @@ public class BookingMenu extends javax.swing.JFrame {
         jLabel62 = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
-        roundedButton4 = new train.ticket.RoundedButton();
-        roundedButton5 = new train.ticket.RoundedButton();
-        roundedButton6 = new train.ticket.RoundedButton();
+        roundedButton4 = new train.ticket.components.RoundedButton();
+        roundedButton5 = new train.ticket.components.RoundedButton();
+        roundedButton6 = new train.ticket.components.RoundedButton();
         jLabel20 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -845,9 +846,9 @@ public class BookingMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private train.ticket.RoundedComboBox cbTrainNumber1;
-    private train.ticket.RoundedComboBox cbTrainNumber2;
-    private train.ticket.RoundedComboBox cbTrainNumber3;
+    private train.ticket.components.RoundedComboBox cbTrainNumber1;
+    private train.ticket.components.RoundedComboBox cbTrainNumber2;
+    private train.ticket.components.RoundedComboBox cbTrainNumber3;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -902,16 +903,16 @@ public class BookingMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel3;
-    private train.ticket.RoundedButton roundedButton1;
-    private train.ticket.RoundedButton roundedButton2;
-    private train.ticket.RoundedButton roundedButton3;
-    private train.ticket.RoundedButton roundedButton4;
-    private train.ticket.RoundedButton roundedButton5;
-    private train.ticket.RoundedButton roundedButton6;
-    private train.ticket.RoundedPanel roundedPanel11;
-    private train.ticket.RoundedPanel roundedPanel12;
-    private train.ticket.RoundedPanel roundedPanel13;
-    private train.ticket.RoundedTextField roundedTextField1;
-    private train.ticket.RoundedTextField roundedTextField2;
+    private train.ticket.components.RoundedButton roundedButton1;
+    private train.ticket.components.RoundedButton roundedButton2;
+    private train.ticket.components.RoundedButton roundedButton3;
+    private train.ticket.components.RoundedButton roundedButton4;
+    private train.ticket.components.RoundedButton roundedButton5;
+    private train.ticket.components.RoundedButton roundedButton6;
+    private train.ticket.components.RoundedPanel roundedPanel11;
+    private train.ticket.components.RoundedPanel roundedPanel12;
+    private train.ticket.components.RoundedPanel roundedPanel13;
+    private train.ticket.components.RoundedTextField roundedTextField1;
+    private train.ticket.components.RoundedTextField roundedTextField2;
     // End of variables declaration//GEN-END:variables
 }

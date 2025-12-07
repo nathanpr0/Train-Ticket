@@ -4,14 +4,22 @@
  */
 package train.ticket;
 
+import train.ticket.components.RoundedBorder;
 import java.awt.*;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import train.ticket.databases.Koneksi;
 
 /**
  *
  * @author user
  */
 public class LoginPanel extends javax.swing.JFrame {
-    
+
+    private boolean isShown = false;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(LoginPanel.class.getName());
 
     /**
@@ -36,11 +44,11 @@ public class LoginPanel extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        RoundedButtonLogin = new train.ticket.RoundedButton();
-        ulUsername = new train.ticket.UnderLineTextField();
+        login_btn = new train.ticket.components.RoundedButton();
+        input_username = new train.ticket.components.UnderLineTextField();
         jLabel22 = new javax.swing.JLabel();
-        ulPasswordField = new train.ticket.UnderLineTextField();
-        showHideButton = new train.ticket.ShowHideButton();
+        showHideButton = new train.ticket.components.ShowHideButton();
+        input_pw = new train.ticket.components.UnderLinePasswordField();
         jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,24 +74,29 @@ public class LoginPanel extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(68, 68, 68));
         jLabel21.setText("Username :");
 
-        RoundedButtonLogin.setBackground(new java.awt.Color(255, 255, 255));
-        RoundedButtonLogin.setBorder(new RoundedBorder(20, new Color(68,68,68), 1));
-        RoundedButtonLogin.setForeground(new java.awt.Color(68, 68, 68));
-        RoundedButtonLogin.setText("Login");
+        login_btn.setBackground(new java.awt.Color(255, 255, 255));
+        login_btn.setBorder(new RoundedBorder(20, new Color(68,68,68), 1));
+        login_btn.setForeground(new java.awt.Color(68, 68, 68));
+        login_btn.setText("Login");
+        login_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                login_btnActionPerformed(evt);
+            }
+        });
 
         jLabel22.setFont(new java.awt.Font("Inter 18pt Black", 0, 24)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(68, 68, 68));
         jLabel22.setText("Password :");
 
-        ulPasswordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ulPasswordFieldActionPerformed(evt);
-            }
-        });
-
         showHideButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 showHideButtonActionPerformed(evt);
+            }
+        });
+
+        input_pw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                input_pwActionPerformed(evt);
             }
         });
 
@@ -101,18 +114,17 @@ public class LoginPanel extends javax.swing.JFrame {
                             .addComponent(jLabel20)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                                .addComponent(RoundedButtonLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(login_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel21)
-                            .addComponent(ulUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel22)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(showHideButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(ulPasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(input_username, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel22)
+                                .addGap(235, 235, 235)
+                                .addComponent(showHideButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(input_pw, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -128,15 +140,15 @@ public class LoginPanel extends javax.swing.JFrame {
                 .addGap(68, 68, 68)
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(ulUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(input_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(showHideButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(ulPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(input_pw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
-                .addComponent(RoundedButtonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(login_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(98, 98, 98))
         );
 
@@ -181,14 +193,51 @@ public class LoginPanel extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void showHideButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showHideButtonActionPerformed
-        
+        if (isShown) {
+            input_pw.setEchoChar('•');  // sembunyikan
+            showHideButton.setText("");
+        } else {
+            input_pw.setEchoChar((char) 0);  // tampilkan
+            showHideButton.setText("");
+        }
+        isShown = !isShown;
     }//GEN-LAST:event_showHideButtonActionPerformed
 
-    private void ulPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ulPasswordFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ulPasswordFieldActionPerformed
+    private void input_pwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_pwActionPerformed
+
+    }//GEN-LAST:event_input_pwActionPerformed
+
+    private void login_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_btnActionPerformed
+        String username = input_username.getText();
+        String password = new String(input_pw.getPassword());
+
+        try {
+            Connection conn = Koneksi.getConnection();
+
+            String sql = "SELECT * FROM USER WHERE NAME=? AND PASSWORD=?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            pst.setString(1, username);
+            pst.setString(2, password);
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "Login berhasil!");
+
+                // pindah ke form lain
+                new BookingMenu().setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Username atau Password salah!");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_login_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,7 +265,8 @@ public class LoginPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private train.ticket.RoundedButton RoundedButtonLogin;
+    private train.ticket.components.UnderLinePasswordField input_pw;
+    private train.ticket.components.UnderLineTextField input_username;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
@@ -225,8 +275,7 @@ public class LoginPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private train.ticket.ShowHideButton showHideButton;
-    private train.ticket.UnderLineTextField ulPasswordField;
-    private train.ticket.UnderLineTextField ulUsername;
+    private train.ticket.components.RoundedButton login_btn;
+    private train.ticket.components.ShowHideButton showHideButton;
     // End of variables declaration//GEN-END:variables
 }

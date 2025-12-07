@@ -4,6 +4,7 @@
  */
 package train.ticket;
 
+import train.ticket.components.RoundedBorder;
 import java.awt.*;
 
 /**
@@ -36,7 +37,7 @@ public class TrainSchedule extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        roundedPanel1 = new train.ticket.RoundedPanel();
+        roundedPanel1 = new train.ticket.components.RoundedPanel();
         jLabel30 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -225,6 +226,6 @@ public class TrainSchedule extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private train.ticket.RoundedPanel roundedPanel1;
+    private train.ticket.components.RoundedPanel roundedPanel1;
     // End of variables declaration//GEN-END:variables
 }
