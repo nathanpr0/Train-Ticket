@@ -1,25 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package train.ticket;
+package client.pages;
 
-import train.ticket.components.RoundedBorder;
+import client.components.RoundedBorder;
 import java.awt.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import train.ticket.databases.Koneksi;
+import server.Koneksi;
+import server.sessions.UserSession;
 
-/**
- *
- * @author user
- */
 public class LoginPanel extends javax.swing.JFrame {
 
-    private boolean isShown = false;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(LoginPanel.class.getName());
 
     /**
@@ -44,11 +36,11 @@ public class LoginPanel extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        login_btn = new train.ticket.components.RoundedButton();
-        input_username = new train.ticket.components.UnderLineTextField();
+        login_btn = new client.components.RoundedButton();
+        input_username = new client.components.UnderLineTextField();
         jLabel22 = new javax.swing.JLabel();
-        showHideButton = new train.ticket.components.ShowHideButton();
-        input_pw = new train.ticket.components.UnderLinePasswordField();
+        showHideButton = new client.components.ShowHideButton();
+        input_pw = new client.components.UnderLinePasswordField();
         jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -194,6 +186,7 @@ public class LoginPanel extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean isShown = false;
     private void showHideButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showHideButtonActionPerformed
         if (isShown) {
             input_pw.setEchoChar('•');  // sembunyikan
@@ -214,24 +207,28 @@ public class LoginPanel extends javax.swing.JFrame {
         String password = new String(input_pw.getPassword());
 
         try {
-            Connection conn = Koneksi.getConnection();
+            try (Connection conn = Koneksi.getConnection()) {
+                String sql = "SELECT * FROM USER WHERE NAME=? AND PASSWORD=?";
+                PreparedStatement pst = conn.prepareStatement(sql);
 
-            String sql = "SELECT * FROM USER WHERE NAME=? AND PASSWORD=?";
-            PreparedStatement pst = conn.prepareStatement(sql);
+                pst.setString(1, username);
+                pst.setString(2, password);
 
-            pst.setString(1, username);
-            pst.setString(2, password);
+                ResultSet rs = pst.executeQuery();
 
-            ResultSet rs = pst.executeQuery();
+                if (rs.next()) {
+                    JOptionPane.showMessageDialog(this, "Login berhasil!");
 
-            if (rs.next()) {
-                JOptionPane.showMessageDialog(this, "Login berhasil!");
+                    // Simpan nama admin ke session
+                    String adminName = rs.getString("name");
+                    UserSession.setAdminName(adminName);
 
-                // pindah ke form lain
-                new BookingMenu().setVisible(true);
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Username atau Password salah!");
+                    // Buka menu
+                    new BookingMenu().setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Username atau Password salah!");
+                }
             }
 
         } catch (Exception e) {
@@ -265,8 +262,8 @@ public class LoginPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private train.ticket.components.UnderLinePasswordField input_pw;
-    private train.ticket.components.UnderLineTextField input_username;
+    private client.components.UnderLinePasswordField input_pw;
+    private client.components.UnderLineTextField input_username;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
@@ -275,7 +272,7 @@ public class LoginPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private train.ticket.components.RoundedButton login_btn;
-    private train.ticket.components.ShowHideButton showHideButton;
+    private client.components.RoundedButton login_btn;
+    private client.components.ShowHideButton showHideButton;
     // End of variables declaration//GEN-END:variables
 }

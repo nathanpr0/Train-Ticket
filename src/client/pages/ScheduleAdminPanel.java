@@ -1,18 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package train.ticket;
+package client.pages;
 
-import train.ticket.components.RoundedBorder;
+import client.components.RoundedBorder;
 import java.awt.*;
 import java.io.InputStream;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import train.ticket.databases.Koneksi;
+import server.Koneksi;
+import server.sessions.UserSession;
 
 /**
  *
@@ -27,6 +25,14 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
      */
     public ScheduleAdminPanel() {
         initComponents();
+
+        String namaAdmin = UserSession.getAdminName();
+
+        if (namaAdmin == null || namaAdmin.isEmpty()) {
+            lblProfile.setText("Profile");
+        } else {
+            lblProfile.setText(namaAdmin);
+        }
     }
 
     /**
@@ -42,41 +48,41 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        roundedPanel2 = new train.ticket.components.RoundedPanel();
+        roundedPanel2 = new client.components.RoundedPanel();
         jLabel29 = new javax.swing.JLabel();
-        cmbDestination = new train.ticket.components.RoundedComboBox();
-        cmbCarriages = new train.ticket.components.RoundedComboBox();
-        cmbClass = new train.ticket.components.RoundedComboBox();
-        btnInput = new train.ticket.components.RoundedButton();
-        txtPrice = new train.ticket.components.RoundedTextField();
+        cmbDestination = new client.components.RoundedComboBox();
+        cmbCarriages = new client.components.RoundedComboBox();
+        cmbClass = new client.components.RoundedComboBox();
+        btnInput = new client.components.RoundedButton();
+        txtPrice = new client.components.RoundedTextField();
         jLabel21 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        txtMachinist = new train.ticket.components.RoundedTextField();
-        txtDepartureTime = new train.ticket.components.RoundedTextField();
-        txtTrainNumber = new train.ticket.components.RoundedTextField();
+        txtMachinist = new client.components.RoundedTextField();
+        txtDepartureTime = new client.components.RoundedTextField();
+        txtTrainNumber = new client.components.RoundedTextField();
         jLabel35 = new javax.swing.JLabel();
-        roundedPanel1 = new train.ticket.components.RoundedPanel();
+        roundedPanel1 = new client.components.RoundedPanel();
         jLabel30 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        roundedPanel4 = new train.ticket.components.RoundedPanel();
+        roundedPanel4 = new client.components.RoundedPanel();
         jLabel31 = new javax.swing.JLabel();
-        btnIdDelete = new train.ticket.components.RoundedButton();
-        rtfPrice1 = new train.ticket.components.RoundedTextField();
+        btnIdDelete = new client.components.RoundedButton();
+        idScheduleDeleteTxtField = new client.components.RoundedTextField();
         jLabel32 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        roundedPanel5 = new train.ticket.components.RoundedPanel();
+        roundedPanel5 = new client.components.RoundedPanel();
         jLabel33 = new javax.swing.JLabel();
-        btnBookingDelete = new train.ticket.components.RoundedButton();
-        rtfPrice2 = new train.ticket.components.RoundedTextField();
+        btnBookingDelete = new client.components.RoundedButton();
+        bookingTicketDeleteTxtField = new client.components.RoundedTextField();
         jLabel34 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        nav_booking = new train.ticket.components.RoundedButton();
-        nav_schedule = new train.ticket.components.RoundedButton();
+        lblProfile = new javax.swing.JLabel();
+        nav_booking = new client.components.RoundedButton();
+        nav_schedule = new client.components.RoundedButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -338,12 +344,12 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
             }
         });
 
-        rtfPrice1.setBorder(null);
-        rtfPrice1.setForeground(new java.awt.Color(68, 68, 68));
-        rtfPrice1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        rtfPrice1.addActionListener(new java.awt.event.ActionListener() {
+        idScheduleDeleteTxtField.setBorder(null);
+        idScheduleDeleteTxtField.setForeground(new java.awt.Color(68, 68, 68));
+        idScheduleDeleteTxtField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        idScheduleDeleteTxtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rtfPrice1ActionPerformed(evt);
+                idScheduleDeleteTxtFieldActionPerformed(evt);
             }
         });
 
@@ -360,7 +366,7 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel32)
                     .addComponent(roundedPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rtfPrice1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(idScheduleDeleteTxtField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnIdDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -372,7 +378,7 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel32)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rtfPrice1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(idScheduleDeleteTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnIdDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -410,12 +416,12 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
             }
         });
 
-        rtfPrice2.setBorder(null);
-        rtfPrice2.setForeground(new java.awt.Color(68, 68, 68));
-        rtfPrice2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        rtfPrice2.addActionListener(new java.awt.event.ActionListener() {
+        bookingTicketDeleteTxtField.setBorder(null);
+        bookingTicketDeleteTxtField.setForeground(new java.awt.Color(68, 68, 68));
+        bookingTicketDeleteTxtField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        bookingTicketDeleteTxtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rtfPrice2ActionPerformed(evt);
+                bookingTicketDeleteTxtFieldActionPerformed(evt);
             }
         });
 
@@ -432,7 +438,7 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel34)
                     .addComponent(roundedPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rtfPrice2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bookingTicketDeleteTxtField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBookingDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -444,7 +450,7 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel34)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rtfPrice2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bookingTicketDeleteTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBookingDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -482,10 +488,10 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-train-50.png"))); // NOI18N
         jLabel19.setText("UBD Express");
 
-        jLabel20.setFont(new java.awt.Font("Inter 18pt Black", 1, 24)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/compresskaru_logo ubd_50x50.png"))); // NOI18N
-        jLabel20.setText("Profile");
+        lblProfile.setFont(new java.awt.Font("Inter 18pt Black", 1, 24)); // NOI18N
+        lblProfile.setForeground(new java.awt.Color(68, 68, 68));
+        lblProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/compresskaru_logo ubd_50x50.png"))); // NOI18N
+        lblProfile.setText("Profile");
 
         nav_booking.setBackground(new java.awt.Color(68, 68, 68));
         nav_booking.setBorder(new RoundedBorder(20, new Color(68,68,68), 1));
@@ -517,7 +523,7 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(nav_schedule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel20)
+                .addComponent(lblProfile)
                 .addGap(40, 40, 40))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
@@ -533,7 +539,7 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(nav_booking, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(nav_schedule, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblProfile, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
@@ -564,114 +570,172 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
     private void btnInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInputActionPerformed
         try {
 
-            Connection conn = Koneksi.getConnection();
+            try (Connection conn = Koneksi.getConnection()) {
+                if (conn == null) {
+                    JOptionPane.showMessageDialog(this, "Koneksi database gagal!");
+                    return;
+                }
 
-            if (conn == null) {
-                JOptionPane.showMessageDialog(this, "Koneksi database gagal!");
-                return;
-            }
+                // DATA INPUT
+                String trainNumber = txtTrainNumber.getText();
+                String machinist = txtMachinist.getText();
 
-            // DATA INPUT
-            String trainNumber = txtTrainNumber.getText();
-            String machinist = txtMachinist.getText();
+                // ORIGIN OTOMATIS
+                String origin = "Tangerang";
 
-            // ORIGIN OTOMATIS
-            String origin = "Tangerang";
+                String destination = cmbDestination.getSelectedItem().toString();
+                String departure = txtDepartureTime.getText();
+                String kelas = cmbClass.getSelectedItem().toString();
+                int carriages = Integer.parseInt(cmbCarriages.getSelectedItem().toString());
+                int harga = Integer.parseInt(txtPrice.getText());
 
-            String destination = cmbDestination.getSelectedItem().toString();
-            String departure = txtDepartureTime.getText();
-            String kelas = cmbClass.getSelectedItem().toString();
-            int carriages = Integer.parseInt(cmbCarriages.getSelectedItem().toString());
-            int harga = Integer.parseInt(txtPrice.getText());
+                // VALIDASI
+                if (trainNumber.isEmpty() || machinist.isEmpty() || departure.isEmpty() || txtPrice.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Data tidak boleh kosong!");
+                    return;
+                }
 
-            // VALIDASI
-            if (trainNumber.isEmpty() || machinist.isEmpty() || departure.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Data tidak boleh kosong!");
-                return;
-            }
+                if (origin.equals(destination)) {
+                    JOptionPane.showMessageDialog(this, "Origin dan Destination tidak boleh sama!");
+                    return;
+                }
 
-            if (origin.equals(destination)) {
-                JOptionPane.showMessageDialog(this, "Origin dan Destination tidak boleh sama!");
-                return;
-            }
+                // CEK BENTROK KERETA
+                String cekKereta = "SELECT * FROM schedule WHERE train_number=? AND departure_time=?";
+                PreparedStatement cek1 = conn.prepareStatement(cekKereta);
+                cek1.setString(1, trainNumber);
+                cek1.setString(2, departure);
+                ResultSet rs1 = cek1.executeQuery();
 
-            // CEK BENTROK KERETA
-            String cekKereta = "SELECT * FROM schedule WHERE train_number=? AND departure_time=?";
-            PreparedStatement cek1 = conn.prepareStatement(cekKereta);
-            cek1.setString(1, trainNumber);
-            cek1.setString(2, departure);
-            ResultSet rs1 = cek1.executeQuery();
+                if (rs1.next()) {
+                    JOptionPane.showMessageDialog(this,
+                            "JADWAL BENTROK!\nKereta ini sudah ada di jam tersebut.");
+                    return;
+                }
 
-            if (rs1.next()) {
+                // CEK BENTROK MASINIS
+                String cekMasinis = "SELECT * FROM schedule WHERE machinist=? AND departure_time=?";
+                PreparedStatement cek2 = conn.prepareStatement(cekMasinis);
+                cek2.setString(1, machinist);
+                cek2.setString(2, departure);
+                ResultSet rs2 = cek2.executeQuery();
+
+                if (rs2.next()) {
+                    JOptionPane.showMessageDialog(this,
+                            "MASINIS BENTROK!\nMasinis ini sudah mengemudi di jam tersebut.");
+                    return;
+                }
+
+                // INSERT DATABASE
+                String sql = "INSERT INTO schedule "
+                        + "(train_number, machinist, origin, destination, departure_time, carriages, class, price) "
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+                PreparedStatement pst = conn.prepareStatement(sql);
+
+                pst.setString(1, trainNumber);
+                pst.setString(2, machinist);
+                pst.setString(3, origin);
+                pst.setString(4, destination);
+                pst.setString(5, departure);
+                pst.setInt(6, carriages);
+                pst.setString(7, kelas);
+                pst.setInt(8, harga);
+
+                pst.executeUpdate();
+
                 JOptionPane.showMessageDialog(this,
-                        "JADWAL BENTROK!\nKereta ini sudah ada di jam tersebut.");
-                return;
+                        "Schedule berhasil ditambahkan!\nOrigin otomatis : Tangerang");
+
+                // CLEAR FORM
+                txtTrainNumber.setText("");
+                txtMachinist.setText("");
+                txtDepartureTime.setText("");
+                txtPrice.setText("");
             }
 
-            // CEK BENTROK MASINIS
-            String cekMasinis = "SELECT * FROM schedule WHERE machinist=? AND departure_time=?";
-            PreparedStatement cek2 = conn.prepareStatement(cekMasinis);
-            cek2.setString(1, machinist);
-            cek2.setString(2, departure);
-            ResultSet rs2 = cek2.executeQuery();
-
-            if (rs2.next()) {
-                JOptionPane.showMessageDialog(this,
-                        "MASINIS BENTROK!\nMasinis ini sudah mengemudi di jam tersebut.");
-                return;
-            }
-
-            // INSERT DATABASE
-            String sql = "INSERT INTO schedule "
-                    + "(train_number, machinist, origin, destination, departure_time, carriages, class, price) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
-            PreparedStatement pst = conn.prepareStatement(sql);
-
-            pst.setString(1, trainNumber);
-            pst.setString(2, machinist);
-            pst.setString(3, origin);
-            pst.setString(4, destination);
-            pst.setString(5, departure);
-            pst.setInt(6, carriages);
-            pst.setString(7, kelas);
-            pst.setInt(8,harga);
-
-            pst.executeUpdate();
-
-            JOptionPane.showMessageDialog(this,
-                    "Schedule berhasil ditambahkan!\nOrigin otomatis : Tangerang");
-
-            // CLEAR FORM
-            txtTrainNumber.setText("");
-            txtMachinist.setText("");
-            txtDepartureTime.setText("");
-            txtPrice.setText("");
-
-        } catch (Exception e) {
+        } catch (HeadlessException | NumberFormatException | SQLException e) {
             JOptionPane.showMessageDialog(this, "ERROR: " + e.getMessage());
         }
     }//GEN-LAST:event_btnInputActionPerformed
 
     private void btnIdDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIdDeleteActionPerformed
-        // TODO add your handling code here:
+        String idSchedule = idScheduleDeleteTxtField.getText().trim();
+
+        if (idSchedule.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "ID Schedule tidak boleh kosong!");
+            return;
+        }
+
+        try {
+            try (Connection conn = Koneksi.getConnection()) {
+                if (conn == null) {
+                    JOptionPane.showMessageDialog(this, "Koneksi database gagal!");
+                    return;
+                }
+
+                String sql = "DELETE FROM schedule WHERE id_schedule = ?";
+                PreparedStatement pst = conn.prepareStatement(sql);
+                pst.setString(1, idSchedule);
+
+                int result = pst.executeUpdate();
+
+                if (result > 0) {
+                    JOptionPane.showMessageDialog(this, "Schedule berhasil dihapus!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "ID Schedule tidak ditemukan!");
+                }
+            }
+
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnIdDeleteActionPerformed
 
     private void btnBookingDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingDeleteActionPerformed
-        // TODO add your handling code here:
+        String bookingTicket = bookingTicketDeleteTxtField.getText().trim();
+
+        if (bookingTicket.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Booking Ticket tidak boleh kosong!");
+            return;
+        }
+
+        try {
+            try (Connection conn = Koneksi.getConnection()) {
+                if (conn == null) {
+                    JOptionPane.showMessageDialog(this, "Koneksi database gagal!");
+                    return;
+                }
+
+                String sql = "DELETE FROM booking WHERE booking_code = ?";
+                PreparedStatement pst = conn.prepareStatement(sql);
+                pst.setString(1, bookingTicket);
+
+                int result = pst.executeUpdate();
+
+                if (result > 0) {
+                    JOptionPane.showMessageDialog(this, "Booking Ticket berhasil dihapus!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Ticket tidak ditemukan!");
+                }
+            }
+
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnBookingDeleteActionPerformed
 
     private void txtPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPriceActionPerformed
 
-    private void rtfPrice1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rtfPrice1ActionPerformed
+    private void idScheduleDeleteTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idScheduleDeleteTxtFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rtfPrice1ActionPerformed
+    }//GEN-LAST:event_idScheduleDeleteTxtFieldActionPerformed
 
-    private void rtfPrice2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rtfPrice2ActionPerformed
+    private void bookingTicketDeleteTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingTicketDeleteTxtFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rtfPrice2ActionPerformed
+    }//GEN-LAST:event_bookingTicketDeleteTxtFieldActionPerformed
 
     private void nav_bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nav_bookingActionPerformed
         new BookingMenu().setVisible(true);
@@ -714,15 +778,15 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
         } else if (kelas.equals("Executive")) {
             price = 10000;
         }
-        
-        if (destination.equals("Jakarta")){
+
+        if (destination.equals("Jakarta")) {
             price += 3000;
-        }else if (destination.equals("Bogor")){
+        } else if (destination.equals("Bogor")) {
             price += 10000;
-        }else if (destination.equals("Yogyakarta")){
+        } else if (destination.equals("Yogyakarta")) {
             price += 15000;
         }
-        
+
         txtPrice.setText(String.valueOf(price));
     }
 
@@ -771,14 +835,15 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private train.ticket.components.RoundedButton btnBookingDelete;
-    private train.ticket.components.RoundedButton btnIdDelete;
-    private train.ticket.components.RoundedButton btnInput;
-    private train.ticket.components.RoundedComboBox cmbCarriages;
-    private train.ticket.components.RoundedComboBox cmbClass;
-    private train.ticket.components.RoundedComboBox cmbDestination;
+    private client.components.RoundedTextField bookingTicketDeleteTxtField;
+    private client.components.RoundedButton btnBookingDelete;
+    private client.components.RoundedButton btnIdDelete;
+    private client.components.RoundedButton btnInput;
+    private client.components.RoundedComboBox cmbCarriages;
+    private client.components.RoundedComboBox cmbClass;
+    private client.components.RoundedComboBox cmbDestination;
+    private client.components.RoundedTextField idScheduleDeleteTxtField;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -798,17 +863,16 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private train.ticket.components.RoundedButton nav_booking;
-    private train.ticket.components.RoundedButton nav_schedule;
-    private train.ticket.components.RoundedPanel roundedPanel1;
-    private train.ticket.components.RoundedPanel roundedPanel2;
-    private train.ticket.components.RoundedPanel roundedPanel4;
-    private train.ticket.components.RoundedPanel roundedPanel5;
-    private train.ticket.components.RoundedTextField rtfPrice1;
-    private train.ticket.components.RoundedTextField rtfPrice2;
-    private train.ticket.components.RoundedTextField txtDepartureTime;
-    private train.ticket.components.RoundedTextField txtMachinist;
-    private train.ticket.components.RoundedTextField txtPrice;
-    private train.ticket.components.RoundedTextField txtTrainNumber;
+    private javax.swing.JLabel lblProfile;
+    private client.components.RoundedButton nav_booking;
+    private client.components.RoundedButton nav_schedule;
+    private client.components.RoundedPanel roundedPanel1;
+    private client.components.RoundedPanel roundedPanel2;
+    private client.components.RoundedPanel roundedPanel4;
+    private client.components.RoundedPanel roundedPanel5;
+    private client.components.RoundedTextField txtDepartureTime;
+    private client.components.RoundedTextField txtMachinist;
+    private client.components.RoundedTextField txtPrice;
+    private client.components.RoundedTextField txtTrainNumber;
     // End of variables declaration//GEN-END:variables
 }

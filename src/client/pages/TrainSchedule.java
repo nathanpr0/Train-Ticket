@@ -1,18 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package train.ticket;
+package client.pages;
 
-import train.ticket.components.RoundedBorder;
+import client.components.RoundedBorder;
 import java.awt.*;
+import javax.swing.table.DefaultTableModel;
+import server.controller.LoadScheduleData;
+import server.sessions.UserSession;
 
-/**
- *
- * @author user
- */
 public class TrainSchedule extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TrainSchedule.class.getName());
 
     /**
@@ -20,6 +15,20 @@ public class TrainSchedule extends javax.swing.JFrame {
      */
     public TrainSchedule() {
         initComponents();
+
+        // MENGGUNAKAN MODEL UNTUK MENGAMBIL DATA SCHEDULE
+        DefaultTableModel model = LoadScheduleData.getScheduleData();
+
+        // MENGIRIMKAN HASIL MODEL DATA KE TABLE JFRAME
+        schedule_data.setModel(model);
+
+        String namaAdmin = UserSession.getAdminName();
+
+        if (namaAdmin == null || namaAdmin.isEmpty()) {
+            lblProfile.setText("Profile");
+        } else {
+            lblProfile.setText(namaAdmin);
+        }
     }
 
     /**
@@ -35,14 +44,14 @@ public class TrainSchedule extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        lblProfile = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        roundedPanel1 = new train.ticket.components.RoundedPanel();
+        roundedPanel1 = new client.components.RoundedPanel();
         jLabel30 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        customTable1 = new train.ticket.components.CustomTable();
-        nav_booking = new train.ticket.components.RoundedButton();
-        nav_admin = new train.ticket.components.RoundedButton();
+        schedule_data = new client.components.CustomTable();
+        nav_booking = new client.components.RoundedButton();
+        nav_admin = new client.components.RoundedButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,9 +67,18 @@ public class TrainSchedule extends javax.swing.JFrame {
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/compresskaru_logo ubd_50x50.png"))); // NOI18N
 
-        jLabel20.setFont(new java.awt.Font("Inter 18pt Black", 1, 24)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel20.setText("Profile");
+        lblProfile.setFont(new java.awt.Font("Inter 18pt Black", 1, 24)); // NOI18N
+        lblProfile.setForeground(new java.awt.Color(68, 68, 68));
+        lblProfile.setText("Profile");
+        lblProfile.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                lblProfileAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(new RoundedBorder(20, new Color(68, 68, 68), 1));
@@ -86,9 +104,9 @@ public class TrainSchedule extends javax.swing.JFrame {
             .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 13, Short.MAX_VALUE)
         );
 
-        customTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(68, 68, 68)));
-        customTable1.setForeground(new java.awt.Color(68, 68, 68));
-        jScrollPane1.setViewportView(customTable1);
+        schedule_data.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(68, 68, 68)));
+        schedule_data.setForeground(new java.awt.Color(68, 68, 68));
+        jScrollPane1.setViewportView(schedule_data);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -145,7 +163,7 @@ public class TrainSchedule extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel20)
+                .addComponent(lblProfile)
                 .addGap(34, 34, 34))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
@@ -164,7 +182,7 @@ public class TrainSchedule extends javax.swing.JFrame {
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblProfile, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
@@ -201,6 +219,10 @@ public class TrainSchedule extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_nav_adminActionPerformed
 
+    private void lblProfileAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblProfileAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblProfileAncestorAdded
+
     /**
      * @param args the command line arguments
      */
@@ -227,17 +249,17 @@ public class TrainSchedule extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private train.ticket.components.CustomTable customTable1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private train.ticket.components.RoundedButton nav_admin;
-    private train.ticket.components.RoundedButton nav_booking;
-    private train.ticket.components.RoundedPanel roundedPanel1;
+    private javax.swing.JLabel lblProfile;
+    private client.components.RoundedButton nav_admin;
+    private client.components.RoundedButton nav_booking;
+    private client.components.RoundedPanel roundedPanel1;
+    private client.components.CustomTable schedule_data;
     // End of variables declaration//GEN-END:variables
 }

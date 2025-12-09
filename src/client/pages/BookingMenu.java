@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package train.ticket;
+package client.pages;
 
-import train.ticket.components.RoundedBorder;
+import client.components.RoundedBorder;
 import java.awt.*;
+import server.sessions.UserSession;
 
-/**
- *
- * @author user
- */
 public class BookingMenu extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BookingMenu.class.getName());
@@ -20,6 +13,15 @@ public class BookingMenu extends javax.swing.JFrame {
      */
     public BookingMenu() {
         initComponents();
+
+        String namaAdmin = UserSession.getAdminName();
+
+        if (namaAdmin == null || namaAdmin.isEmpty()) {
+            lblProfile.setText("Profile"); 
+        } else {
+            lblProfile.setText(namaAdmin);
+        }
+
     }
 
     /**
@@ -34,21 +36,21 @@ public class BookingMenu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
-        roundedPanel11 = new train.ticket.components.RoundedPanel();
+        roundedPanel11 = new client.components.RoundedPanel();
         jLabel45 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        cbTrainNumber1 = new train.ticket.components.RoundedComboBox();
+        cbTrainNumber1 = new client.components.RoundedComboBox();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        cbTrainNumber2 = new train.ticket.components.RoundedComboBox();
+        cbTrainNumber2 = new client.components.RoundedComboBox();
         jLabel24 = new javax.swing.JLabel();
-        cbTrainNumber3 = new train.ticket.components.RoundedComboBox();
+        cbTrainNumber3 = new client.components.RoundedComboBox();
         jLabel25 = new javax.swing.JLabel();
-        roundedTextField1 = new train.ticket.components.RoundedTextField();
-        roundedTextField2 = new train.ticket.components.RoundedTextField();
+        roundedTextField1 = new client.components.RoundedTextField();
+        roundedTextField2 = new client.components.RoundedTextField();
         jLabel19 = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
-        roundedPanel13 = new train.ticket.components.RoundedPanel();
+        roundedPanel13 = new client.components.RoundedPanel();
         jLabel46 = new javax.swing.JLabel();
         jPanel25 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
@@ -66,11 +68,11 @@ public class BookingMenu extends javax.swing.JFrame {
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        roundedButton1 = new train.ticket.components.RoundedButton();
-        roundedButton2 = new train.ticket.components.RoundedButton();
-        roundedButton3 = new train.ticket.components.RoundedButton();
+        roundedButton1 = new client.components.RoundedButton();
+        roundedButton2 = new client.components.RoundedButton();
+        roundedButton3 = new client.components.RoundedButton();
         jPanel2 = new javax.swing.JPanel();
-        roundedPanel12 = new train.ticket.components.RoundedPanel();
+        roundedPanel12 = new client.components.RoundedPanel();
         jLabel47 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
@@ -96,12 +98,12 @@ public class BookingMenu extends javax.swing.JFrame {
         jLabel62 = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
-        roundedButton4 = new train.ticket.components.RoundedButton();
-        roundedButton5 = new train.ticket.components.RoundedButton();
-        roundedButton6 = new train.ticket.components.RoundedButton();
-        jLabel20 = new javax.swing.JLabel();
-        nav_admin = new train.ticket.components.RoundedButton();
-        nav_schedule = new train.ticket.components.RoundedButton();
+        roundedButton4 = new client.components.RoundedButton();
+        roundedButton5 = new client.components.RoundedButton();
+        roundedButton6 = new client.components.RoundedButton();
+        lblProfile = new javax.swing.JLabel();
+        nav_admin = new client.components.RoundedButton();
+        nav_schedule = new client.components.RoundedButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -741,10 +743,10 @@ public class BookingMenu extends javax.swing.JFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jLabel20.setFont(new java.awt.Font("Inter 18pt Black", 1, 24)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/compresskaru_logo ubd_50x50.png"))); // NOI18N
-        jLabel20.setText("Profile");
+        lblProfile.setFont(new java.awt.Font("Inter 18pt Black", 1, 24)); // NOI18N
+        lblProfile.setForeground(new java.awt.Color(68, 68, 68));
+        lblProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/compresskaru_logo ubd_50x50.png"))); // NOI18N
+        lblProfile.setText("Profile");
 
         nav_admin.setBackground(new java.awt.Color(68, 68, 68));
         nav_admin.setBorder(new RoundedBorder(20, new Color(68,68,68), 1));
@@ -778,7 +780,7 @@ public class BookingMenu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(nav_schedule, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel20))
+                        .addComponent(lblProfile))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -797,7 +799,7 @@ public class BookingMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nav_admin, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nav_schedule, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -884,11 +886,10 @@ public class BookingMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private train.ticket.components.RoundedComboBox cbTrainNumber1;
-    private train.ticket.components.RoundedComboBox cbTrainNumber2;
-    private train.ticket.components.RoundedComboBox cbTrainNumber3;
+    private client.components.RoundedComboBox cbTrainNumber1;
+    private client.components.RoundedComboBox cbTrainNumber2;
+    private client.components.RoundedComboBox cbTrainNumber3;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -942,18 +943,19 @@ public class BookingMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private train.ticket.components.RoundedButton nav_admin;
-    private train.ticket.components.RoundedButton nav_schedule;
-    private train.ticket.components.RoundedButton roundedButton1;
-    private train.ticket.components.RoundedButton roundedButton2;
-    private train.ticket.components.RoundedButton roundedButton3;
-    private train.ticket.components.RoundedButton roundedButton4;
-    private train.ticket.components.RoundedButton roundedButton5;
-    private train.ticket.components.RoundedButton roundedButton6;
-    private train.ticket.components.RoundedPanel roundedPanel11;
-    private train.ticket.components.RoundedPanel roundedPanel12;
-    private train.ticket.components.RoundedPanel roundedPanel13;
-    private train.ticket.components.RoundedTextField roundedTextField1;
-    private train.ticket.components.RoundedTextField roundedTextField2;
+    private javax.swing.JLabel lblProfile;
+    private client.components.RoundedButton nav_admin;
+    private client.components.RoundedButton nav_schedule;
+    private client.components.RoundedButton roundedButton1;
+    private client.components.RoundedButton roundedButton2;
+    private client.components.RoundedButton roundedButton3;
+    private client.components.RoundedButton roundedButton4;
+    private client.components.RoundedButton roundedButton5;
+    private client.components.RoundedButton roundedButton6;
+    private client.components.RoundedPanel roundedPanel11;
+    private client.components.RoundedPanel roundedPanel12;
+    private client.components.RoundedPanel roundedPanel13;
+    private client.components.RoundedTextField roundedTextField1;
+    private client.components.RoundedTextField roundedTextField2;
     // End of variables declaration//GEN-END:variables
 }

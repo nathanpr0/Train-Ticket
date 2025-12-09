@@ -1,17 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package train.ticket.components;
+package client.components;
 
 import javax.swing.*;
 import javax.swing.table.*;
 import java.awt.*;
-
-/**
- *
- * @author user
- */
 
 public class CustomTable extends JTable {
 

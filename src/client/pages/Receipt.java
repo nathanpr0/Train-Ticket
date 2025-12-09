@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package train.ticket;
+package client.pages;
 
-import train.ticket.components.RoundedBorder;
+import client.components.RoundedBorder;
 import java.awt.*;
 
-/**
- *
- * @author user
- */
 public class Receipt extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Receipt.class.getName());
@@ -36,7 +28,7 @@ public class Receipt extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        roundedPanel1 = new train.ticket.components.RoundedPanel();
+        roundedPanel1 = new client.components.RoundedPanel();
         jLabel30 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -464,7 +456,6 @@ public class Receipt extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel44;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
-    private train.ticket.components.RoundedPanel roundedPanel1;
+    private client.components.RoundedPanel roundedPanel1;
     // End of variables declaration//GEN-END:variables
 }

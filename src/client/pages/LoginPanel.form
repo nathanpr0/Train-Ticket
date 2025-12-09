@@ -189,7 +189,7 @@
                 <Property name="text" type="java.lang.String" value="Username :"/>
               </Properties>
             </Component>
-            <Component class="train.ticket.components.RoundedButton" name="login_btn">
+            <Component class="client.components.RoundedButton" name="login_btn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -206,7 +206,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="login_btnActionPerformed"/>
               </Events>
             </Component>
-            <Component class="train.ticket.components.UnderLineTextField" name="input_username">
+            <Component class="client.components.UnderLineTextField" name="input_username">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel22">
               <Properties>
@@ -219,12 +219,12 @@
                 <Property name="text" type="java.lang.String" value="Password :"/>
               </Properties>
             </Component>
-            <Component class="train.ticket.components.ShowHideButton" name="showHideButton">
+            <Component class="client.components.ShowHideButton" name="showHideButton">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showHideButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="train.ticket.components.UnderLinePasswordField" name="input_pw">
+            <Component class="client.components.UnderLinePasswordField" name="input_pw">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="input_pwActionPerformed"/>
               </Events>
