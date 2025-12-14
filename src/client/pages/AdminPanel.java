@@ -5,25 +5,25 @@ import java.awt.*;
 import java.io.InputStream;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import server.Koneksi;
+import server.controller.admin_panel.DeleteBooking;
+import server.controller.admin_panel.DeleteSchedule;
+import server.controller.admin_panel.InputAdminPanel;
 import server.sessions.UserSession;
 
 /**
  *
  * @author user
  */
-public class ScheduleAdminPanel extends javax.swing.JFrame {
+public class AdminPanel extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ScheduleAdminPanel.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdminPanel.class.getName());
 
     /**
      * Creates new form ScheduleAdminPanel
      */
-    public ScheduleAdminPanel() {
+    public AdminPanel() {
         initComponents();
 
         String namaAdmin = UserSession.getAdminName();
@@ -70,7 +70,7 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         roundedPanel4 = new client.components.RoundedPanel();
         jLabel31 = new javax.swing.JLabel();
-        btnIdDelete = new client.components.RoundedButton();
+        btnScheludeDelete = new client.components.RoundedButton();
         idScheduleDeleteTxtField = new client.components.RoundedTextField();
         jLabel32 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -83,6 +83,7 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
         lblProfile = new javax.swing.JLabel();
         nav_booking = new client.components.RoundedButton();
         nav_schedule = new client.components.RoundedButton();
+        nav_booked_data = new client.components.RoundedButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -232,7 +233,7 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel21)
                                             .addComponent(roundedPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 126, Short.MAX_VALUE)))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
                                 .addGap(150, 150, 150))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,11 +337,11 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
             .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        btnIdDelete.setBackground(new java.awt.Color(185, 0, 0));
-        btnIdDelete.setText("Confirm Delete");
-        btnIdDelete.addActionListener(new java.awt.event.ActionListener() {
+        btnScheludeDelete.setBackground(new java.awt.Color(185, 0, 0));
+        btnScheludeDelete.setText("Confirm Delete");
+        btnScheludeDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIdDeleteActionPerformed(evt);
+                btnScheludeDeleteActionPerformed(evt);
             }
         });
 
@@ -367,7 +368,7 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
                     .addComponent(jLabel32)
                     .addComponent(roundedPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(idScheduleDeleteTxtField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnIdDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE))
+                    .addComponent(btnScheludeDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -380,7 +381,7 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(idScheduleDeleteTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnIdDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnScheludeDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -462,12 +463,14 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(roundedPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(roundedPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -511,24 +514,36 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
             }
         });
 
+        nav_booked_data.setBackground(new java.awt.Color(68, 68, 68));
+        nav_booked_data.setBorder(new RoundedBorder(20, new Color(68,68,68), 1));
+        nav_booked_data.setText("Booked Data");
+        nav_booked_data.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nav_booked_dataActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel19)
-                .addGap(18, 18, 18)
-                .addComponent(nav_booking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(nav_schedule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblProfile)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel19)
+                        .addGap(18, 18, 18)
+                        .addComponent(nav_booking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(nav_schedule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(nav_booked_data, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addComponent(lblProfile)))
                 .addGap(40, 40, 40))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -539,7 +554,9 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(nav_booking, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(nav_schedule, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblProfile, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nav_booked_data, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
@@ -552,9 +569,9 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(239, 239, 239)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addGap(170, 170, 170)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 955, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -568,160 +585,79 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInputActionPerformed
-        try {
+        try (Connection conn = Koneksi.getConnection()) {
 
-            try (Connection conn = Koneksi.getConnection()) {
-                if (conn == null) {
-                    JOptionPane.showMessageDialog(this, "Koneksi database gagal!");
-                    return;
-                }
+            // MANGGIL CLASS CONTROLLER UNTUK ADMIN PANEL
+            InputAdminPanel input_admin_panel = new InputAdminPanel();
 
-                // DATA INPUT
-                String trainNumber = txtTrainNumber.getText();
-                String machinist = txtMachinist.getText();
+            // MENGAMBIL VALUE DARI SETIAP INPUT ADMIN PANEL
+            String trainNumber = txtTrainNumber.getText();
+            String machinist = txtMachinist.getText();
+            String origin = "Tangerang";
+            String destination = cmbDestination.getSelectedItem().toString();
+            String departure = txtDepartureTime.getText();
+            String kelas = cmbClass.getSelectedItem().toString();
+            int carriages = Integer.parseInt(cmbCarriages.getSelectedItem().toString());
+            int harga = Integer.parseInt(txtPrice.getText());
 
-                // ORIGIN OTOMATIS
-                String origin = "Tangerang";
+            // MANGGIL METODE UNTUK MENCEGAH INPUT KOSONG
+            input_admin_panel.cekInputKosong(
+                    trainNumber, machinist, departure,
+                    txtPrice.getText(), origin, destination
+            );
 
-                String destination = cmbDestination.getSelectedItem().toString();
-                String departure = txtDepartureTime.getText();
-                String kelas = cmbClass.getSelectedItem().toString();
-                int carriages = Integer.parseInt(cmbCarriages.getSelectedItem().toString());
-                int harga = Integer.parseInt(txtPrice.getText());
+            // MANGGIL METODE PENGECEKAN BENTROK JADWAL ANTARA JAM DAN MASINIS YANG SAMA
+            input_admin_panel.cekBentrokJadwal(conn, trainNumber, machinist, departure);
 
-                // VALIDASI
-                if (trainNumber.isEmpty() || machinist.isEmpty() || departure.isEmpty() || txtPrice.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(this, "Data tidak boleh kosong!");
-                    return;
-                }
+            // MANGGIL METODE MASUKKAN DATA KE DATABASE
+            input_admin_panel.inputDataSchedule(
+                    conn, trainNumber, machinist, origin,
+                    destination, departure, carriages, kelas, harga
+            );
 
-                if (origin.equals(destination)) {
-                    JOptionPane.showMessageDialog(this, "Origin dan Destination tidak boleh sama!");
-                    return;
-                }
+            JOptionPane.showMessageDialog(this, "Schedule berhasil ditambahkan!");
+            txtTrainNumber.setText("");
+            txtMachinist.setText("");
+            txtDepartureTime.setText("");
+            txtPrice.setText("");
 
-                // CEK BENTROK KERETA
-                String cekKereta = "SELECT * FROM schedule WHERE train_number=? AND departure_time=?";
-                PreparedStatement cek1 = conn.prepareStatement(cekKereta);
-                cek1.setString(1, trainNumber);
-                cek1.setString(2, departure);
-                ResultSet rs1 = cek1.executeQuery();
-
-                if (rs1.next()) {
-                    JOptionPane.showMessageDialog(this,
-                            "JADWAL BENTROK!\nKereta ini sudah ada di jam tersebut.");
-                    return;
-                }
-
-                // CEK BENTROK MASINIS
-                String cekMasinis = "SELECT * FROM schedule WHERE machinist=? AND departure_time=?";
-                PreparedStatement cek2 = conn.prepareStatement(cekMasinis);
-                cek2.setString(1, machinist);
-                cek2.setString(2, departure);
-                ResultSet rs2 = cek2.executeQuery();
-
-                if (rs2.next()) {
-                    JOptionPane.showMessageDialog(this,
-                            "MASINIS BENTROK!\nMasinis ini sudah mengemudi di jam tersebut.");
-                    return;
-                }
-
-                // INSERT DATABASE
-                String sql = "INSERT INTO schedule "
-                        + "(train_number, machinist, origin, destination, departure_time, carriages, class, price) "
-                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
-                PreparedStatement pst = conn.prepareStatement(sql);
-
-                pst.setString(1, trainNumber);
-                pst.setString(2, machinist);
-                pst.setString(3, origin);
-                pst.setString(4, destination);
-                pst.setString(5, departure);
-                pst.setInt(6, carriages);
-                pst.setString(7, kelas);
-                pst.setInt(8, harga);
-
-                pst.executeUpdate();
-
-                JOptionPane.showMessageDialog(this,
-                        "Schedule berhasil ditambahkan!\nOrigin otomatis : Tangerang");
-
-                // CLEAR FORM
-                txtTrainNumber.setText("");
-                txtMachinist.setText("");
-                txtDepartureTime.setText("");
-                txtPrice.setText("");
-            }
-
-        } catch (HeadlessException | NumberFormatException | SQLException e) {
-            JOptionPane.showMessageDialog(this, "ERROR: " + e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
+
     }//GEN-LAST:event_btnInputActionPerformed
 
-    private void btnIdDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIdDeleteActionPerformed
-        String idSchedule = idScheduleDeleteTxtField.getText().trim();
+    private void btnScheludeDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheludeDeleteActionPerformed
+        try (Connection conn = Koneksi.getConnection()) {
 
-        if (idSchedule.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "ID Schedule tidak boleh kosong!");
-            return;
+            DeleteSchedule service = new DeleteSchedule();
+            String idSchedule = idScheduleDeleteTxtField.getText().trim();
+
+            service.cekInputKosong(idSchedule);
+            service.deleteByIdSchedule(conn, idSchedule);
+
+            JOptionPane.showMessageDialog(this, "Schedule berhasil dihapus!");
+            idScheduleDeleteTxtField.setText("");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
-
-        try {
-            try (Connection conn = Koneksi.getConnection()) {
-                if (conn == null) {
-                    JOptionPane.showMessageDialog(this, "Koneksi database gagal!");
-                    return;
-                }
-
-                String sql = "DELETE FROM schedule WHERE id_schedule = ?";
-                PreparedStatement pst = conn.prepareStatement(sql);
-                pst.setString(1, idSchedule);
-
-                int result = pst.executeUpdate();
-
-                if (result > 0) {
-                    JOptionPane.showMessageDialog(this, "Schedule berhasil dihapus!");
-                } else {
-                    JOptionPane.showMessageDialog(this, "ID Schedule tidak ditemukan!");
-                }
-            }
-
-        } catch (HeadlessException | SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-        }
-    }//GEN-LAST:event_btnIdDeleteActionPerformed
+    }//GEN-LAST:event_btnScheludeDeleteActionPerformed
 
     private void btnBookingDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingDeleteActionPerformed
-        String bookingTicket = bookingTicketDeleteTxtField.getText().trim();
+        try (Connection conn = Koneksi.getConnection()) {
 
-        if (bookingTicket.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Booking Ticket tidak boleh kosong!");
-            return;
-        }
+            DeleteBooking service = new DeleteBooking();
+            String bookingTicket = bookingTicketDeleteTxtField.getText().trim();
 
-        try {
-            try (Connection conn = Koneksi.getConnection()) {
-                if (conn == null) {
-                    JOptionPane.showMessageDialog(this, "Koneksi database gagal!");
-                    return;
-                }
+            service.validate(bookingTicket);
+            service.deleteByBookingCode(conn, bookingTicket);
 
-                String sql = "DELETE FROM booking WHERE booking_code = ?";
-                PreparedStatement pst = conn.prepareStatement(sql);
-                pst.setString(1, bookingTicket);
+            JOptionPane.showMessageDialog(this, "Booking Ticket berhasil dihapus!");
+            bookingTicketDeleteTxtField.setText("");
 
-                int result = pst.executeUpdate();
-
-                if (result > 0) {
-                    JOptionPane.showMessageDialog(this, "Booking Ticket berhasil dihapus!");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Ticket tidak ditemukan!");
-                }
-            }
-
-        } catch (HeadlessException | SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_btnBookingDeleteActionPerformed
 
@@ -799,6 +735,11 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
         updatePrice();
     }//GEN-LAST:event_cmbDestinationActionPerformed
 
+    private void nav_booked_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nav_booked_dataActionPerformed
+        new BookedData().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_nav_booked_dataActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -831,14 +772,14 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ScheduleAdminPanel().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new AdminPanel().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private client.components.RoundedTextField bookingTicketDeleteTxtField;
     private client.components.RoundedButton btnBookingDelete;
-    private client.components.RoundedButton btnIdDelete;
     private client.components.RoundedButton btnInput;
+    private client.components.RoundedButton btnScheludeDelete;
     private client.components.RoundedComboBox cmbCarriages;
     private client.components.RoundedComboBox cmbClass;
     private client.components.RoundedComboBox cmbDestination;
@@ -864,6 +805,7 @@ public class ScheduleAdminPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblProfile;
+    private client.components.RoundedButton nav_booked_data;
     private client.components.RoundedButton nav_booking;
     private client.components.RoundedButton nav_schedule;
     private client.components.RoundedPanel roundedPanel1;

@@ -104,6 +104,7 @@ public class BookingMenu extends javax.swing.JFrame {
         lblProfile = new javax.swing.JLabel();
         nav_admin = new client.components.RoundedButton();
         nav_schedule = new client.components.RoundedButton();
+        nav_booked_data = new client.components.RoundedButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -677,7 +678,7 @@ public class BookingMenu extends javax.swing.JFrame {
                         .addComponent(roundedButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(roundedButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -766,6 +767,15 @@ public class BookingMenu extends javax.swing.JFrame {
             }
         });
 
+        nav_booked_data.setBackground(new java.awt.Color(68, 68, 68));
+        nav_booked_data.setBorder(new RoundedBorder(20, new Color(68,68,68), 1));
+        nav_booked_data.setText("Booked Data");
+        nav_booked_data.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nav_booked_dataActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -779,7 +789,9 @@ public class BookingMenu extends javax.swing.JFrame {
                         .addComponent(nav_admin, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(nav_schedule, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(nav_booked_data, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(lblProfile))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -801,7 +813,8 @@ public class BookingMenu extends javax.swing.JFrame {
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nav_admin, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nav_schedule, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nav_schedule, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nav_booked_data, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -822,8 +835,8 @@ public class BookingMenu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(245, 245, 245)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1021, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(144, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -851,7 +864,7 @@ public class BookingMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_roundedButton3ActionPerformed
 
     private void nav_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nav_adminActionPerformed
-        new ScheduleAdminPanel().setVisible(true);
+        new AdminPanel().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_nav_adminActionPerformed
 
@@ -859,6 +872,11 @@ public class BookingMenu extends javax.swing.JFrame {
         new TrainSchedule().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_nav_scheduleActionPerformed
+
+    private void nav_booked_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nav_booked_dataActionPerformed
+        new BookedData().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_nav_booked_dataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -945,6 +963,7 @@ public class BookingMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblProfile;
     private client.components.RoundedButton nav_admin;
+    private client.components.RoundedButton nav_booked_data;
     private client.components.RoundedButton nav_schedule;
     private client.components.RoundedButton roundedButton1;
     private client.components.RoundedButton roundedButton2;
