@@ -24,16 +24,16 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="955" max="-2" attributes="0"/>
-              <EmptySpace pref="124" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="135" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jScrollPane1" pref="799" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="799" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -50,33 +50,30 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[776, 805]"/>
+              <Dimension value="[968, 799]"/>
             </Property>
           </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel2" max="32767" attributes="0"/>
-                          </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jPanel2" alignment="0" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="nav_booking" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="nav_schedule" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="nav_booked_data" min="-2" pref="162" max="-2" attributes="0"/>
-                              <EmptySpace pref="19" max="32767" attributes="0"/>
-                              <Component id="lblProfile" min="-2" max="-2" attributes="0"/>
+                              <Component id="nav_booked_data" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                              <Component id="lblProfile" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace pref="50" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -84,20 +81,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="jLabel19" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
-                              <Component id="nav_booking" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="nav_schedule" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="lblProfile" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
-                              <Component id="nav_booked_data" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel19" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
+                          <Component id="nav_booking" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nav_schedule" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nav_booked_data" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblProfile" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -119,14 +112,17 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jPanel3" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="roundedPanel1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="roundedPanel1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -143,7 +139,7 @@
                           <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="15" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -164,47 +160,36 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="txtPrice" min="-2" pref="260" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="roundedPanel2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Component id="cmbClass" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="cmbCarriages" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtTrainNumber" alignment="0" max="32767" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="roundedPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="txtTrainNumber" max="32767" attributes="0"/>
+                                          <Component id="cmbCarriages" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="cmbClass" alignment="0" pref="350" max="32767" attributes="0"/>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel35" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
+                                          <Component id="txtPrice" alignment="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtMachinist" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="cmbDestination" alignment="1" pref="260" max="32767" attributes="0"/>
-                                              <Component id="txtDepartureTime" alignment="1" max="32767" attributes="0"/>
-                                          </Group>
+                                      <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtMachinist" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel26" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel27" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnInput" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
+                                          <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cmbDestination" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtDepartureTime" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="btnInput" alignment="1" pref="350" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                   </Group>
@@ -216,20 +201,12 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="roundedPanel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtMachinist" min="-2" pref="26" max="-2" attributes="0"/>
-                                  <Component id="txtTrainNumber" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" attributes="0">
+                                      <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtMachinist" min="-2" pref="26" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="cmbDestination" min="-2" pref="26" max="-2" attributes="0"/>
@@ -237,8 +214,15 @@
                                       <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="txtDepartureTime" min="-2" pref="26" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
+                                      <Component id="roundedPanel2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtTrainNumber" min="-2" pref="26" max="-2" attributes="0"/>
+                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                                       <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="cmbCarriages" min="-2" pref="26" max="-2" attributes="0"/>
@@ -246,14 +230,14 @@
                                       <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="cmbClass" min="-2" pref="26" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="txtPrice" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                                          <Component id="btnInput" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtPrice" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                                  <Component id="btnInput" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="17" max="32767" attributes="0"/>
                           </Group>
@@ -563,7 +547,7 @@
                                   <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
                                   <Component id="roundedPanel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="idScheduleDeleteTxtField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnScheludeDelete" alignment="0" pref="666" max="32767" attributes="0"/>
+                                  <Component id="btnScheludeDelete" alignment="0" pref="818" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -681,7 +665,7 @@
                                   <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
                                   <Component id="roundedPanel5" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="bookingTicketDeleteTxtField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnBookingDelete" alignment="0" pref="666" max="32767" attributes="0"/>
+                                  <Component id="btnBookingDelete" alignment="0" pref="818" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -819,6 +803,9 @@
                   <Connection code="new RoundedBorder(20, new Color(68,68,68), 1)" type="code"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Booking Ticket"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[144, 21]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nav_bookingActionPerformed"/>
@@ -833,6 +820,9 @@
                   <Connection code="new RoundedBorder(20, new Color(68,68,68), 1)" type="code"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Train Schedule"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[145, 21]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nav_scheduleActionPerformed"/>
@@ -847,6 +837,9 @@
                   <Connection code="new RoundedBorder(20, new Color(68,68,68), 1)" type="code"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Booked Data"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[145, 21]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nav_booked_dataActionPerformed"/>
