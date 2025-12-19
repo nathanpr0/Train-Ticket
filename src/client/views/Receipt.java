@@ -1,4 +1,4 @@
-package client.pages;
+package client.views;
 
 import client.components.RoundedBorder;
 import java.awt.*;

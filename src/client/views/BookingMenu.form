@@ -25,8 +25,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="189" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="995" max="-2" attributes="0"/>
-              <EmptySpace pref="189" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="1041" max="-2" attributes="0"/>
+              <EmptySpace pref="143" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -55,13 +55,13 @@
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jPanel22" max="32767" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jPanel22" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jPanel24" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jPanel24" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="roundedButton3" min="-2" pref="438" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="see_schedule_btn" min="-2" pref="438" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -98,11 +98,11 @@
                           <Group type="102" attributes="0">
                               <Component id="jPanel24" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="roundedButton3" min="-2" pref="21" max="-2" attributes="0"/>
+                              <Component id="see_schedule_btn" min="-2" pref="28" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jPanel22" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="19" max="32767" attributes="0"/>
                   </Group>
@@ -126,19 +126,21 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="roundedPanel11" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                              <Component id="roundedTextField1" alignment="0" pref="423" max="32767" attributes="0"/>
-                              <Component id="cbTrainNumber1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cbTrainNumber2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cbTrainNumber3" alignment="0" max="32767" attributes="0"/>
-                              <Component id="roundedTextField2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtBookingName" pref="466" max="32767" attributes="0"/>
+                              <Component id="cmbDestination" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cmbClass" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cmbDepartureTime" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtPrice" alignment="0" pref="466" max="32767" attributes="0"/>
+                              <Component id="jLabel65" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="roundedPanel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbCarriage" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="29" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -150,24 +152,28 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          <Component id="roundedTextField1" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtBookingName" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                           <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cbTrainNumber1" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbDestination" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cbTrainNumber2" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbClass" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cbTrainNumber3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbDepartureTime" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="roundedTextField2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="12" max="32767" attributes="0"/>
+                          <Component id="txtPrice" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel65" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cmbCarriage" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="17" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -222,7 +228,7 @@
                     <Property name="text" type="java.lang.String" value="Booking Name"/>
                   </Properties>
                 </Component>
-                <Component class="client.components.RoundedComboBox" name="cbTrainNumber1">
+                <Component class="client.components.RoundedComboBox" name="cmbDestination">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -231,6 +237,9 @@
                       <Color blue="44" green="44" red="44" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbDestinationActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel22">
                   <Properties>
@@ -254,7 +263,7 @@
                     <Property name="text" type="java.lang.String" value="Class"/>
                   </Properties>
                 </Component>
-                <Component class="client.components.RoundedComboBox" name="cbTrainNumber2">
+                <Component class="client.components.RoundedComboBox" name="cmbClass">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -263,6 +272,9 @@
                       <Color blue="44" green="44" red="44" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbClassActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel24">
                   <Properties>
@@ -275,7 +287,7 @@
                     <Property name="text" type="java.lang.String" value="Depature Time"/>
                   </Properties>
                 </Component>
-                <Component class="client.components.RoundedComboBox" name="cbTrainNumber3">
+                <Component class="client.components.RoundedComboBox" name="cmbDepartureTime">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -284,6 +296,9 @@
                       <Color blue="44" green="44" red="44" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbDepartureTimeActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel25">
                   <Properties>
@@ -296,7 +311,7 @@
                     <Property name="text" type="java.lang.String" value="Price"/>
                   </Properties>
                 </Component>
-                <Component class="client.components.RoundedTextField" name="roundedTextField1">
+                <Component class="client.components.RoundedTextField" name="txtBookingName">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="new RoundedBorder(20, new Color(68,68,68), 1)" type="code"/>
@@ -305,14 +320,14 @@
                       <Color blue="44" green="44" red="44" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Typing Here..."/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roundedTextField1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBookingNameActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="client.components.RoundedTextField" name="roundedTextField2">
+                <Component class="client.components.RoundedTextField" name="txtPrice">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="new RoundedBorder(20, new Color(68,68,68), 1)" type="code"/>
                     </Property>
@@ -322,7 +337,31 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roundedTextField2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPriceActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel65">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Inter 18pt Black" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="44" green="44" red="44" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Carriage"/>
+                  </Properties>
+                </Component>
+                <Component class="client.components.RoundedComboBox" name="cmbCarriage">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="44" green="44" red="44" type="rgb"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbCarriageActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -360,7 +399,7 @@
                               <Component id="roundedPanel13" min="-2" max="-2" attributes="0"/>
                               <Component id="jPanel25" max="32767" attributes="0"/>
                               <Component id="roundedButton2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="roundedButton1" alignment="1" max="32767" attributes="0"/>
+                              <Component id="confirm_booking_btn" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace pref="26" max="32767" attributes="0"/>
                       </Group>
@@ -373,11 +412,11 @@
                           <Component id="roundedPanel13" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel25" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="confirm_booking_btn" min="-2" pref="33" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="roundedButton2" pref="29" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="roundedButton1" min="-2" pref="21" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="roundedButton2" min="-2" pref="21" max="-2" attributes="0"/>
-                          <EmptySpace pref="9" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -452,14 +491,14 @@
                               <EmptySpace pref="88" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel34" min="-2" pref="205" max="-2" attributes="0"/>
-                                      <Component id="jLabel35" min="-2" pref="205" max="-2" attributes="0"/>
-                                      <Component id="jLabel36" min="-2" pref="205" max="-2" attributes="0"/>
-                                      <Component id="jLabel37" min="-2" pref="205" max="-2" attributes="0"/>
-                                      <Component id="jLabel38" min="-2" pref="205" max="-2" attributes="0"/>
+                                      <Component id="lblFromStation" min="-2" pref="205" max="-2" attributes="0"/>
+                                      <Component id="lblDestination" min="-2" pref="205" max="-2" attributes="0"/>
+                                      <Component id="lblBookingName" min="-2" pref="205" max="-2" attributes="0"/>
+                                      <Component id="lblDate" min="-2" pref="205" max="-2" attributes="0"/>
+                                      <Component id="lblCost" min="-2" pref="205" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jLabel39" alignment="1" min="-2" pref="205" max="-2" attributes="0"/>
-                                  <Component id="jLabel40" alignment="1" min="-2" pref="205" max="-2" attributes="0"/>
+                                  <Component id="lblAdditionalCost" alignment="1" min="-2" pref="205" max="-2" attributes="0"/>
+                                  <Component id="lblTotalCost" alignment="1" min="-2" pref="205" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           </Group>
@@ -476,39 +515,39 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblFromStation" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDestination" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblBookingName" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDate" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblCost" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jPanel26" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblAdditionalCost" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel40" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTotalCost" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -617,7 +656,7 @@
                         <Property name="text" type="java.lang.String" value="Total Cost :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel34">
+                    <Component class="javax.swing.JLabel" name="lblFromStation">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Inter 18pt Black" size="12" style="1"/>
@@ -629,7 +668,7 @@
                         <Property name="text" type="java.lang.String" value="-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel35">
+                    <Component class="javax.swing.JLabel" name="lblDestination">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Inter 18pt Black" size="12" style="1"/>
@@ -641,7 +680,7 @@
                         <Property name="text" type="java.lang.String" value="-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel36">
+                    <Component class="javax.swing.JLabel" name="lblBookingName">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Inter 18pt Black" size="12" style="1"/>
@@ -653,7 +692,7 @@
                         <Property name="text" type="java.lang.String" value="-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel37">
+                    <Component class="javax.swing.JLabel" name="lblDate">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Inter 18pt Black" size="12" style="1"/>
@@ -665,7 +704,7 @@
                         <Property name="text" type="java.lang.String" value="-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel38">
+                    <Component class="javax.swing.JLabel" name="lblCost">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Inter 18pt Black" size="12" style="1"/>
@@ -677,7 +716,7 @@
                         <Property name="text" type="java.lang.String" value="-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel39">
+                    <Component class="javax.swing.JLabel" name="lblAdditionalCost">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Inter 18pt Black" size="12" style="1"/>
@@ -689,7 +728,7 @@
                         <Property name="text" type="java.lang.String" value="-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel40">
+                    <Component class="javax.swing.JLabel" name="lblTotalCost">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Inter 18pt Black" size="12" style="1"/>
@@ -703,7 +742,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="client.components.RoundedButton" name="roundedButton1">
+                <Component class="client.components.RoundedButton" name="confirm_booking_btn">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="44" green="44" red="44" type="rgb"/>
@@ -713,6 +752,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Confirm Booking"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirm_booking_btnActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="client.components.RoundedButton" name="roundedButton2">
                   <Properties>
@@ -733,7 +775,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="client.components.RoundedButton" name="roundedButton3">
+            <Component class="client.components.RoundedButton" name="see_schedule_btn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="44" green="44" red="44" type="rgb"/>
@@ -744,7 +786,7 @@
                 <Property name="text" type="java.lang.String" value="See Schedule"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roundedButton3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="see_schedule_btnActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel2">
@@ -813,7 +855,7 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel55" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="jLabel55" alignment="0" pref="410" max="32767" attributes="0"/>
                                                   <Component id="jLabel54" max="32767" attributes="0"/>
                                                   <Component id="jLabel60" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="jLabel61" alignment="0" max="32767" attributes="0"/>

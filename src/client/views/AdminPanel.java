@@ -1,4 +1,4 @@
-package client.pages;
+package client.views;
 
 import client.components.RoundedBorder;
 import java.awt.*;
@@ -25,6 +25,8 @@ public class AdminPanel extends javax.swing.JFrame {
      */
     public AdminPanel() {
         initComponents();
+        
+        updatePrice();
 
         String namaAdmin = UserSession.getAdminName();
 
@@ -119,7 +121,7 @@ public class AdminPanel extends javax.swing.JFrame {
 
         cmbDestination.setBorder(null);
         cmbDestination.setForeground(new java.awt.Color(68, 68, 68));
-        cmbDestination.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jakarta", "Bogor", "Yogyakarta", "Tangerang" }));
+        cmbDestination.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jakarta", "Bogor", "Yogyakarta" }));
         cmbDestination.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbDestinationActionPerformed(evt);
@@ -694,34 +696,32 @@ public class AdminPanel extends javax.swing.JFrame {
     // OTOMATIS PRICE LANGSUNG MUNCUL KETIKA COMBOBOX CLASS & DESTINATION DI PILIH
     private void updatePrice() {
 
-        if (cmbClass.getSelectedItem() == null || cmbCarriages.getSelectedItem() == null) {
+        if (cmbClass.getSelectedItem() == null 
+            || cmbDestination.getSelectedItem() == null) {
             return;
         }
 
         String kelas = cmbClass.getSelectedItem().toString();
         String destination = cmbDestination.getSelectedItem().toString();
+
         int price = 0;
 
-        // MENENTUKAN HARGA TIKET BERDASARKAN CLASS
-        if (kelas.equals("Economy")) {
-            price = 3000;
-        } else if (kelas.equals("Business")) {
-            price = 5000;
-        } else if (kelas.equals("Executive")) {
-            price = 10000;
+        // HARGA BERDASARKAN CLASS
+        switch (kelas) {
+            case "Economy" -> price = 3000;
+            case "Business" -> price = 5000;
+            case "Executive" -> price = 10000;
         }
 
-        if (destination.equals("Jakarta")) {
-            price += 3000;
-        } else if (destination.equals("Bogor")) {
-            price += 10000;
-        } else if (destination.equals("Yogyakarta")) {
-            price += 15000;
+        // TAMBAHAN BERDASARKAN DESTINATION
+        switch (destination) {
+            case "Jakarta" -> price += 3000;
+            case "Bogor" -> price += 10000;
+            case "Yogyakarta" -> price += 15000;
         }
 
         txtPrice.setText(String.valueOf(price));
     }
-
 
     private void cmbClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClassActionPerformed
         updatePrice();

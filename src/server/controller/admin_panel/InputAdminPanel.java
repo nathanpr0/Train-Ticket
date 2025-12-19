@@ -9,8 +9,8 @@ public class InputAdminPanel {
 
     // VALIDASI INPUT
     public void cekInputKosong(String trainNumber, String machinist,
-                              String departure, String price,
-                              String origin, String destination) throws Exception {
+            String departure, String price,
+            String origin, String destination) throws Exception {
 
         if (trainNumber.isEmpty() || machinist.isEmpty()
                 || departure.isEmpty() || price.isEmpty()) {
@@ -24,9 +24,9 @@ public class InputAdminPanel {
 
     // CEK BENTROK JADWAL & MASINIS
     public void cekBentrokJadwal(Connection conn,
-                              String trainNumber,
-                              String machinist,
-                              String departure) throws SQLException, Exception {
+            String trainNumber,
+            String machinist,
+            String departure) throws SQLException, Exception {
 
         // CEK KERETA
         String cekKereta = "SELECT 1 FROM schedule WHERE train_number=? AND departure_time=?";
@@ -53,14 +53,14 @@ public class InputAdminPanel {
 
     // INSERT DATABASE
     public void inputDataSchedule(Connection conn,
-                               String trainNumber,
-                               String machinist,
-                               String origin,
-                               String destination,
-                               String departure,
-                               int carriages,
-                               String kelas,
-                               int harga) throws SQLException {
+            String trainNumber,
+            String machinist,
+            String origin,
+            String destination,
+            String departure,
+            int carriages,
+            String kelas,
+            int harga) throws SQLException {
 
         String sql = "INSERT INTO schedule "
                 + "(train_number, machinist, origin, destination, departure_time, carriages, class, price) "

@@ -1,4 +1,4 @@
-package client.pages;
+package client.views;
 
 import client.components.RoundedBorder;
 import java.awt.*;
@@ -208,7 +208,7 @@ public class LoginPanel extends javax.swing.JFrame {
 
         try {
             try (Connection conn = Koneksi.getConnection()) {
-                String sql = "SELECT * FROM USER WHERE NAME=? AND PASSWORD=?";
+                String sql = "SELECT * FROM admin WHERE NAME=? AND PASSWORD=?";
                 PreparedStatement pst = conn.prepareStatement(sql);
 
                 pst.setString(1, username);
@@ -220,8 +220,9 @@ public class LoginPanel extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Login berhasil!");
 
                     // Simpan nama admin ke session
+                    String adminId   = rs.getString("id");
                     String adminName = rs.getString("name");
-                    UserSession.setAdminName(adminName);
+                    UserSession.setAdmin(adminId, adminName);
 
                     // Buka menu
                     new BookingMenu().setVisible(true);
