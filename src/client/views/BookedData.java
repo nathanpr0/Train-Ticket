@@ -3,6 +3,8 @@ package client.views;
 import client.components.RoundedBorder;
 import server.sessions.UserSession;
 import java.awt.*;
+import javax.swing.table.DefaultTableModel;
+import server.controller.booked_data.LoadBookedData;
 
 public class BookedData extends javax.swing.JFrame {
     
@@ -13,6 +15,10 @@ public class BookedData extends javax.swing.JFrame {
      */
     public BookedData() {
         initComponents();
+        
+        DefaultTableModel model = LoadBookedData.getBookedData();
+        
+        booking_data.setModel(model);
         
         String namaAdmin = UserSession.getAdminName();
 
@@ -39,7 +45,7 @@ public class BookedData extends javax.swing.JFrame {
         roundedPanel1 = new client.components.RoundedPanel();
         jLabel30 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        schedule_data = new client.components.CustomTable();
+        booking_data = new client.components.CustomTable();
         searchTxtField = new client.components.RoundedTextField();
         cmbSortBy = new client.components.RoundedComboBox();
         searchBtn = new client.components.RoundedButton();
@@ -87,9 +93,9 @@ public class BookedData extends javax.swing.JFrame {
             .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 13, Short.MAX_VALUE)
         );
 
-        schedule_data.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(68, 68, 68)));
-        schedule_data.setForeground(new java.awt.Color(68, 68, 68));
-        jScrollPane1.setViewportView(schedule_data);
+        booking_data.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(68, 68, 68)));
+        booking_data.setForeground(new java.awt.Color(68, 68, 68));
+        jScrollPane1.setViewportView(booking_data);
 
         searchTxtField.setBorder(null);
         searchTxtField.addActionListener(new java.awt.event.ActionListener() {
@@ -321,6 +327,7 @@ public class BookedData extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private client.components.CustomTable booking_data;
     private client.components.RoundedComboBox cmbOrder;
     private client.components.RoundedComboBox cmbSortBy;
     private javax.swing.JLabel jLabel11;
@@ -337,7 +344,6 @@ public class BookedData extends javax.swing.JFrame {
     private client.components.RoundedButton nav_booking;
     private client.components.RoundedButton nav_schedule;
     private client.components.RoundedPanel roundedPanel1;
-    private client.components.CustomTable schedule_data;
     private client.components.RoundedButton searchBtn;
     private client.components.RoundedTextField searchTxtField;
     // End of variables declaration//GEN-END:variables
