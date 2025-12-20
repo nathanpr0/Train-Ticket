@@ -69,7 +69,7 @@ VALUES
 ('TRN-805', 'Eko', 'Tangerang', 14, 'Bogor', '07:00', 'Business', 15000),
 
 -- JAM 08:30: Tujuan Yogyakarta
-('TRN-806', 'Fajar', 'Tangerang', 11, 'Yogyakarta', '08:30', 'Executive', 25000),
+('TRN-806', 'Fajar', 'Tangerang', 13, 'Yogyakarta', '08:30', 'Economy', 18000),
 ('TRN-807', 'Gani', 'Tangerang', 15, 'Yogyakarta', '08:30', 'Business', 20000),
 
 -- JAM 10:00: Tujuan Jakarta (Kelas Business Sama, Jam Sama, Gerbong Beda)
@@ -129,7 +129,7 @@ VALUES
 ('TRN-847', 'Vino', 'Tangerang', 15, 'Bogor', '23:30', 'Business', 15000),
 ('TRN-848', 'Wina', 'Tangerang', 13, 'Yogyakarta', '23:45', 'Executive', 25000),
 ('TRN-849', 'Yadi', 'Tangerang', 12, 'Yogyakarta', '23:45', 'Economy', 18000),
-('TRN-850', 'Zaza', 'Tangerang', 14, 'Jakarta', '23:55', 'Economy', 6000);booking`schedule`
+('TRN-850', 'Zaza', 'Tangerang', 14, 'Jakarta', '23:55', 'Economy', 6000);
 
 -- HAPUS TABLE train_ticket
 DROP TABLE USER;

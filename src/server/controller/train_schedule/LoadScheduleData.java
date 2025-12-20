@@ -92,16 +92,19 @@ public class LoadScheduleData {
             case "Origin" -> orderBy = "origin";
             case "Destination" -> orderBy = "destination";
             case "Departure Time" -> orderBy = "departure_time";
+            case "Carriages" -> orderBy = "carriages";
+            case "Class" -> orderBy = "class";
             case "Price" -> orderBy = "price";
         }
 
-        // PENGURUTAN DESCENDING ATAU ASCENDING
+        // PENGURUTAN DESCENDING ATAU ASCENDING UNTUK ORDER
         if ("Descending".equals(order)) {
             orderType = "DESC";
         }else {
             orderType = "ASC";
         }
 
+        // MELAKUKAN SEARCH
         String sql = """
             SELECT * FROM schedule
             WHERE train_number LIKE ?

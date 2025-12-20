@@ -38,7 +38,7 @@ public class LoadBookedData {
 
             while (rs.next()) {
                 model.addRow(new Object[]{
-                    rs.getInt("booking_code"),
+                    rs.getString("booking_code"),
                     rs.getString("name"),
                     rs.getString("booking_date"),
                     rs.getString("status"),
@@ -87,17 +87,21 @@ public class LoadBookedData {
             case "Name" -> orderBy = "name";
             case "Booking Date" -> orderBy = "booking_date";
             case "Status" -> orderBy = "status";
-            case "Id Schedule" -> orderBy = "Id Schedule";
+            case "Additional Cost" -> orderBy = "additional_cost";
+            case "Total Cost" -> orderBy = "total_cost";
+            case "Id Schedule" -> orderBy = "id_schedule";
             case "Id Admin" -> orderBy = "id_admin";
         }
 
-        // PENGURUTAN DESCENDING ATAU ASCENDING
+        // PENGURUTAN DESCENDING ATAU ASCENDING UNTUK ORDER
         if ("Descending".equals(order)) {
             orderType = "DESC";
         }else {
             orderType = "ASC";
         }
 
+        
+        // MELAKUKAN SEARCH
         String sql = """
             SELECT * FROM booking
             WHERE name LIKE ?
@@ -121,13 +125,12 @@ public class LoadBookedData {
             ps.setString(5, key);
             ps.setString(6, key);
             ps.setString(7, key);
-            ps.setString(8, keyword);
 
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 model.addRow(new Object[]{
-                    rs.getInt("booking_code"),
+                    rs.getString("booking_code"),
                     rs.getString("name"),
                     rs.getString("booking_date"),
                     rs.getString("status"),

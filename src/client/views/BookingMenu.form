@@ -398,7 +398,7 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="roundedPanel13" min="-2" max="-2" attributes="0"/>
                               <Component id="jPanel25" max="32767" attributes="0"/>
-                              <Component id="roundedButton2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="resetBtn" alignment="0" max="32767" attributes="0"/>
                               <Component id="confirm_booking_btn" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace pref="26" max="32767" attributes="0"/>
@@ -415,7 +415,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="confirm_booking_btn" min="-2" pref="33" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="roundedButton2" pref="29" max="32767" attributes="0"/>
+                          <Component id="resetBtn" pref="29" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -756,7 +756,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirm_booking_btnActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="client.components.RoundedButton" name="roundedButton2">
+                <Component class="client.components.RoundedButton" name="resetBtn">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -770,7 +770,7 @@
                     <Property name="text" type="java.lang.String" value="Reset"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roundedButton2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resetBtnActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

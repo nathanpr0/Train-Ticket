@@ -275,13 +275,15 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="6">
+                      <StringArray count="8">
                         <StringItem index="0" value="Booking Code"/>
                         <StringItem index="1" value="Name"/>
                         <StringItem index="2" value="Booking Date"/>
                         <StringItem index="3" value="Status"/>
-                        <StringItem index="4" value="Id Schedule"/>
-                        <StringItem index="5" value="Id Admin"/>
+                        <StringItem index="4" value="Additional Cost"/>
+                        <StringItem index="5" value="Total Cost"/>
+                        <StringItem index="6" value="Id Schedule"/>
+                        <StringItem index="7" value="Id Admin"/>
                       </StringArray>
                     </Property>
                   </Properties>

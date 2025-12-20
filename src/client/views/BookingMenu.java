@@ -6,12 +6,15 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+
 import server.Koneksi;
-import server.controller.booking_menu.InputBookingTicket;
 import server.models.BookingSummary;
 import server.sessions.UserSession;
+
+import server.controller.booking_menu.BookingValidation;
+import server.controller.booking_menu.InputBookingTicket;
+import server.controller.booking_menu.ScheduleRepository;
 
 public class BookingMenu extends javax.swing.JFrame {
 
@@ -54,8 +57,8 @@ public class BookingMenu extends javax.swing.JFrame {
             cmbDestination.removeAllItems();
 
             // MENGAMBIL HASIL QUERY destination DARI TABEL SCHEDULE
-            InputBookingTicket ibt = new InputBookingTicket();
-            ResultSet rs = ibt.loadDestinations(conn);
+            ScheduleRepository data_destination = new ScheduleRepository();
+            ResultSet rs = data_destination.loadDestinations(conn);
 
             while (rs.next()) {
                 cmbDestination.addItem(rs.getString("destination"));
@@ -69,24 +72,29 @@ public class BookingMenu extends javax.swing.JFrame {
     private void loadClassCombo() {
         try (Connection conn = Koneksi.getConnection()) {
 
-            if (cmbDestination.getSelectedItem() == null) {
+            Object destObj = cmbDestination.getSelectedItem();
+            if (destObj == null) {
                 return;
             }
 
-            String destination = cmbDestination.getSelectedItem().toString();
+            String destination = destObj.toString();
+            if (destination.isEmpty()) {
+                return;
+            }
 
-            // MEMBERSIHKAN COMBO BOX MENJADI KOSONG SUPAYA BISA DI LOAD PAKE DATABASE
             cmbClass.removeAllItems();
 
-            // MENGAMBIL HASIL QUERY `Class` DARI TABEL SCHEDULE
-            InputBookingTicket ibt = new InputBookingTicket();
-            ResultSet rs = ibt.loadClasses(conn, destination);
+            // MENGAMBIL HASIL QUERY destination DARI TABEL SCHEDULE
+            ScheduleRepository data_class = new ScheduleRepository();
+            ResultSet rs = data_class.loadClasses(conn, destination);
 
             while (rs.next()) {
                 cmbClass.addItem(rs.getString("class"));
-
             }
-            System.out.println("loadClassCombo dipanggil");
+
+            if (cmbClass.getItemCount() > 0) {
+                cmbClass.setSelectedIndex(0);
+            }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -96,16 +104,33 @@ public class BookingMenu extends javax.swing.JFrame {
     // MEMINDAHKAN DATA `departure_time` KE COMBOBOX
     private void loadDepartureCombo() {
         try (Connection conn = Koneksi.getConnection()) {
+
+            Object destObj = cmbDestination.getSelectedItem();
+            Object classObj = cmbClass.getSelectedItem();
+
+            if (destObj == null || classObj == null) {
+                return;
+            }
+
+            String destination = destObj.toString();
+            String kelas = classObj.toString();
+
+            if (destination.isEmpty() || kelas.isEmpty()) {
+                return;
+            }
+
             cmbDepartureTime.removeAllItems();
 
-            String destination = cmbDestination.getSelectedItem().toString();
-            String kelas = cmbClass.getSelectedItem().toString();
-
-            InputBookingTicket ibt = new InputBookingTicket();
-            ResultSet rs = ibt.loadDepartureTimes(conn, destination, kelas);
+            // MENGAMBIL HASIL QUERY destination DARI TABEL SCHEDULE
+            ScheduleRepository data_departure_time = new ScheduleRepository();
+            ResultSet rs = data_departure_time.loadDepartureTimes(conn, destination, kelas);
 
             while (rs.next()) {
                 cmbDepartureTime.addItem(rs.getString("departure_time"));
+            }
+
+            if (cmbDepartureTime.getItemCount() > 0) {
+                cmbDepartureTime.setSelectedIndex(0);
             }
 
         } catch (Exception e) {
@@ -129,13 +154,14 @@ public class BookingMenu extends javax.swing.JFrame {
             scheduleMap.clear();
             priceMap.clear();
 
-            InputBookingTicket ibt = new InputBookingTicket();
-            ResultSet rs = ibt.loadTrainCarriageAndPrice(
+            ScheduleRepository ss = new ScheduleRepository();
+            ResultSet rs = ss.loadTrainCarriageAndPrice(
                     conn, destination, kelas, departure
             );
 
             while (rs.next()) {
-                String display = rs.getString("train_number")
+                String display
+                        = rs.getString("train_number")
                         + " - "
                         + rs.getInt("carriages");
 
@@ -147,12 +173,19 @@ public class BookingMenu extends javax.swing.JFrame {
                 priceMap.put(display, price);
             }
 
+            // AUTO SET PRICE DEFAULT
             if (cmbCarriage.getItemCount() > 0) {
                 cmbCarriage.setSelectedIndex(0);
+                txtPrice.setText(
+                        String.valueOf(
+                                priceMap.get(cmbCarriage.getSelectedItem())
+                        )
+                );
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            // JANGAN POPUP TERUS SAAT USER GANTI COMBO
+            System.out.println("Load carriage gagal: " + e.getMessage());
         }
     }
 
@@ -203,7 +236,7 @@ public class BookingMenu extends javax.swing.JFrame {
         lblAdditionalCost = new javax.swing.JLabel();
         lblTotalCost = new javax.swing.JLabel();
         confirm_booking_btn = new client.components.RoundedButton();
-        roundedButton2 = new client.components.RoundedButton();
+        resetBtn = new client.components.RoundedButton();
         see_schedule_btn = new client.components.RoundedButton();
         jPanel2 = new javax.swing.JPanel();
         roundedPanel12 = new client.components.RoundedPanel();
@@ -580,13 +613,13 @@ public class BookingMenu extends javax.swing.JFrame {
             }
         });
 
-        roundedButton2.setBackground(new java.awt.Color(255, 255, 255));
-        roundedButton2.setBorder(new RoundedBorder(20, new Color(68,68,68), 1));
-        roundedButton2.setForeground(new java.awt.Color(68, 68, 68));
-        roundedButton2.setText("Reset");
-        roundedButton2.addActionListener(new java.awt.event.ActionListener() {
+        resetBtn.setBackground(new java.awt.Color(255, 255, 255));
+        resetBtn.setBorder(new RoundedBorder(20, new Color(68,68,68), 1));
+        resetBtn.setForeground(new java.awt.Color(68, 68, 68));
+        resetBtn.setText("Reset");
+        resetBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roundedButton2ActionPerformed(evt);
+                resetBtnActionPerformed(evt);
             }
         });
 
@@ -599,7 +632,7 @@ public class BookingMenu extends javax.swing.JFrame {
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(roundedPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(roundedButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(resetBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(confirm_booking_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
@@ -613,7 +646,7 @@ public class BookingMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(confirm_booking_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(roundedButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, Short.MAX_VALUE)
+                .addComponent(resetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1046,7 +1079,7 @@ public class BookingMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_see_schedule_btnActionPerformed
 
-    private void roundedButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roundedButton2ActionPerformed
+    private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed
         // RESET TEXT FIELD
         txtBookingName.setText("");
         txtPrice.setText("");
@@ -1059,7 +1092,7 @@ public class BookingMenu extends javax.swing.JFrame {
 
         // LOAD ULANG DESTINATION (AWAL)
         loadDestinationCombo();
-    }//GEN-LAST:event_roundedButton2ActionPerformed
+    }//GEN-LAST:event_resetBtnActionPerformed
 
     private void txtPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriceActionPerformed
         // TODO add your handling code here:
@@ -1084,29 +1117,64 @@ public class BookingMenu extends javax.swing.JFrame {
     private void confirm_booking_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirm_booking_btnActionPerformed
 
         try {
+            BookingValidation validasi = new BookingValidation();
+            InputBookingTicket booking = new InputBookingTicket();
+
             String bookingName = txtBookingName.getText();
+            String destination = (String) cmbDestination.getSelectedItem();
+            String kelas = (String) cmbClass.getSelectedItem();
+            String departure = (String) cmbDepartureTime.getSelectedItem();
+            String carriage = (String) cmbCarriage.getSelectedItem();
+            String price = txtPrice.getText();
 
-            String selected = (String) cmbCarriage.getSelectedItem();
-            if (selected == null || !scheduleMap.containsKey(selected)) {
-                throw new Exception("Schedule belum dipilih!");
+            //  VALIDASI INPUT BILA KOSONG
+            validasi.cekInputKosong(
+                    bookingName,
+                    destination,
+                    kelas,
+                    price,
+                    departure,
+                    carriage
+            );
+
+            //  AMBIL schedule_id
+            if (!scheduleMap.containsKey(carriage)) {
+                throw new Exception("Schedule tidak valid!");
             }
-
-            int selectedScheduleId = scheduleMap.get(selected);
+            int selectedScheduleId = scheduleMap.get(carriage);
 
             try (Connection conn = Koneksi.getConnection()) {
-                InputBookingTicket booking = new InputBookingTicket();
+
+                //  INSERT BOOKING
                 String bookingCode = booking.createBookingByScheduleId(
                         conn,
                         bookingName,
                         selectedScheduleId
                 );
 
-                JOptionPane.showMessageDialog(this,
-                        "Booking berhasil!\nKode Booking: " + bookingCode);
+                //  AMBIL & TAMPILKAN SUMMARY
+                BookingSummary summary = booking.getBookingSummary(conn, bookingCode);
+                showSummary(summary);
+
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Booking berhasil!\nKode Booking: " + bookingCode
+                );
             }
 
+            //  RESET FORM
+            txtBookingName.setText("");
+            txtPrice.setText("");
+
+            cmbDestination.removeAllItems();
+            cmbClass.removeAllItems();
+            cmbDepartureTime.removeAllItems();
+            cmbCarriage.removeAllItems();
+
+            loadDestinationCombo();
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Peringatan", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_confirm_booking_btnActionPerformed
@@ -1228,7 +1296,7 @@ public class BookingMenu extends javax.swing.JFrame {
     private client.components.RoundedButton nav_admin;
     private client.components.RoundedButton nav_booked_data;
     private client.components.RoundedButton nav_schedule;
-    private client.components.RoundedButton roundedButton2;
+    private client.components.RoundedButton resetBtn;
     private client.components.RoundedButton roundedButton4;
     private client.components.RoundedButton roundedButton5;
     private client.components.RoundedButton roundedButton6;

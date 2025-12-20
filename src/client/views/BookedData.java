@@ -7,7 +7,7 @@ import javax.swing.table.DefaultTableModel;
 import server.controller.booked_data.LoadBookedData;
 
 public class BookedData extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BookedData.class.getName());
 
     /**
@@ -15,11 +15,11 @@ public class BookedData extends javax.swing.JFrame {
      */
     public BookedData() {
         initComponents();
-        
+
         DefaultTableModel model = LoadBookedData.getBookedData();
-        
+
         booking_data.setModel(model);
-        
+
         String namaAdmin = UserSession.getAdminName();
 
         if (namaAdmin == null || namaAdmin.isEmpty()) {
@@ -106,7 +106,7 @@ public class BookedData extends javax.swing.JFrame {
         });
 
         cmbSortBy.setBorder(null);
-        cmbSortBy.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Booking Code", "Name", "Booking Date", "Status", "Id Schedule", "Id Admin" }));
+        cmbSortBy.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Booking Code", "Name", "Booking Date", "Status", "Additional Cost", "Total Cost", "Id Schedule", "Id Admin" }));
 
         searchBtn.setBackground(new java.awt.Color(68, 68, 68));
         searchBtn.setText("Search");
@@ -287,7 +287,13 @@ public class BookedData extends javax.swing.JFrame {
     }//GEN-LAST:event_searchTxtFieldActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        String keyword = searchTxtField.getText().trim();
+        String sortBy = cmbSortBy.getSelectedItem().toString();
+        String order = cmbOrder.getSelectedItem().toString();
 
+        DefaultTableModel model = LoadBookedData.searchAndSortSchedule(keyword, sortBy, order);
+
+        booking_data.setModel(model);
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void nav_bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nav_bookingActionPerformed
