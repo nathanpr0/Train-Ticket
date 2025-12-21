@@ -21,12 +21,14 @@ public class Receipt extends javax.swing.JFrame {
 
     public Receipt() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     public Receipt(BookingSummary summary) {
         this.summary = summary;
         initComponents();
         fillData();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     private void fillData() {
@@ -360,7 +362,7 @@ public class Receipt extends javax.swing.JFrame {
                                     .addComponent(lblTotalCost, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))))
                         .addGap(15, 15, 15))))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(235, 235, 235)
+                .addGap(198, 198, 198)
                 .addComponent(lblQRCode)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -428,9 +430,9 @@ public class Receipt extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel39)
                     .addComponent(lblTotalCost))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblQRCode)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addComponent(jLabel42)
                 .addGap(15, 15, 15))
         );

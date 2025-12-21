@@ -1,11 +1,17 @@
 package client.components;
 
+import client.views.Receipt;
 import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JOptionPane;
+import server.Koneksi;
+
+import java.sql.Connection;
+import server.controller.booking_menu.InputBookingTicket;
+import server.models.BookingSummary;
 
 public class ActionButtonEditor extends DefaultCellEditor {
 
@@ -23,23 +29,34 @@ public class ActionButtonEditor extends DefaultCellEditor {
         button.setFocusPainted(false);
 
         button.setIcon(new ImageIcon(
-            ActionButtonEditor.class.getResource("/img/icons8-print-25Black.png")
+                ActionButtonEditor.class.getResource("/img/icons8-print-25Black.png")
         ));
 
         button.addActionListener(e -> {
             fireEditingStopped();
 
             String bookingCode = table.getValueAt(row, 0).toString();
-            String name = table.getValueAt(row, 1).toString();
-            String status = table.getValueAt(row, 3).toString();
 
-            JOptionPane.showMessageDialog(null,
-                "Booking Code : " + bookingCode +
-                "\nName : " + name +
-                "\nStatus : " + status,
-                "Booking Detail",
-                JOptionPane.INFORMATION_MESSAGE
-            );
+            try (Connection conn = Koneksi.getConnection()) {
+
+                InputBookingTicket booking = new InputBookingTicket();
+
+                // 🔥 Ambil summary lengkap dari database
+                BookingSummary summary = booking.getBookingSummary(conn, bookingCode);
+
+                // 🔥 Buka Receipt
+                Receipt receipt = new Receipt(summary);
+                receipt.setLocationRelativeTo(null);
+                receipt.setVisible(true);
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        ex.getMessage(),
+                        "Gagal membuka receipt",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
         });
     }
 
