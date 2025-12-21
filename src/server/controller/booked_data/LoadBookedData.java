@@ -21,10 +21,17 @@ public class LoadBookedData {
                     "Additional Cost",
                     "Total Cost",
                     "Id Schedule",
-                    "Id Admin"
+                    "Id Admin",
+                    "Action"
                 }, 0
-        );
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return column == 8; // hanya kolom button
+            }
+        };
     }
+
 
     // GET ALL DATA
     public static DefaultTableModel getBookedData() {
@@ -45,7 +52,8 @@ public class LoadBookedData {
                     rs.getString("additional_cost"),
                     rs.getString("total_cost"),
                     rs.getInt("id_schedule"),
-                    rs.getString("id_admin")
+                    rs.getString("id_admin"),
+                    "Print"
                 });
             }
 
@@ -65,17 +73,24 @@ public class LoadBookedData {
     ) {
 
         DefaultTableModel model = new DefaultTableModel(
-                new String[]{
-                    "Booking Code",
-                    "Name",
-                    "Booking Date",
-                    "Status",
-                    "Additional Cost",
-                    "Total Cost",
-                    "Id Schedule",
-                    "Id Admin"
-                }, 0
-        );
+            new String[]{
+                "Booking Code",
+                "Name",
+                "Booking Date",
+                "Status",
+                "Additional Cost",
+                "Total Cost",
+                "Id Schedule",
+                "Id Admin",
+                "Action"
+            }, 0
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return column == 8;
+            }
+        };
+
 
         // DEFAULT
         String orderBy = "";
@@ -137,7 +152,8 @@ public class LoadBookedData {
                     rs.getString("additional_cost"),
                     rs.getString("total_cost"),
                     rs.getInt("id_schedule"),
-                    rs.getString("id_admin")
+                    rs.getString("id_admin"),
+                    "Print"
                 });
             }
 
