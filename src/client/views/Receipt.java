@@ -21,12 +21,14 @@ public class Receipt extends javax.swing.JFrame {
 
     public Receipt() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     public Receipt(BookingSummary summary) {
         this.summary = summary;
         initComponents();
         fillData();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     private void fillData() {
@@ -279,7 +281,7 @@ public class Receipt extends javax.swing.JFrame {
         jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel42.setText("Thank You  For Using Our Service, Have A Pleasant Trip!");
 
-        lblQRCode.setText("Buat barcode juga");
+        lblQRCode.setText("Buat barcode ");
 
         jLabel43.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(68, 68, 68));
@@ -360,7 +362,7 @@ public class Receipt extends javax.swing.JFrame {
                                     .addComponent(lblTotalCost, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))))
                         .addGap(15, 15, 15))))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(201, 201, 201)
+                .addGap(198, 198, 198)
                 .addComponent(lblQRCode)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -428,9 +430,9 @@ public class Receipt extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel39)
                     .addComponent(lblTotalCost))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblQRCode)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addComponent(jLabel42)
                 .addGap(15, 15, 15))
         );

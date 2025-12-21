@@ -267,7 +267,6 @@ public class BookingMenu extends javax.swing.JFrame {
         lblAdditionalCost2 = new javax.swing.JLabel();
         lblTotalCost2 = new javax.swing.JLabel();
         printTicketBtn = new client.components.RoundedButton();
-        roundedButton5 = new client.components.RoundedButton();
         lblProfile = new javax.swing.JLabel();
         nav_admin = new client.components.RoundedButton();
         nav_schedule = new client.components.RoundedButton();
@@ -820,13 +819,6 @@ public class BookingMenu extends javax.swing.JFrame {
             }
         });
 
-        roundedButton5.setBackground(new java.awt.Color(255, 255, 255));
-        roundedButton5.setBorder(new RoundedBorder(20, new Color(68,68,68), 1));
-        roundedButton5.setForeground(new java.awt.Color(68, 68, 68));
-        roundedButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-pdf-25.png"))); // NOI18N
-        roundedButton5.setText("Export As PDF");
-        roundedButton5.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -835,27 +827,20 @@ public class BookingMenu extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(roundedPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(printTicketBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(roundedButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(130, 130, 130))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel52)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel29)
                                         .addComponent(jLabel41)
                                         .addComponent(jLabel42))
-                                    .addGap(7, 7, 7))
+                                    .addGap(476, 476, 476))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel43)
@@ -864,11 +849,13 @@ public class BookingMenu extends javax.swing.JFrame {
                                         .addComponent(jLabel50)
                                         .addComponent(jLabel51)
                                         .addComponent(jLabel49))
-                                    .addGap(2, 2, 2))
+                                    .addGap(471, 471, 471))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel53)
-                                    .addGap(28, 28, 28))))
-                        .addGap(469, 469, 469)
+                                    .addGap(497, 497, 497)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel52)
+                                .addGap(469, 469, 469)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                             .addComponent(lblBookingCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -882,6 +869,10 @@ public class BookingMenu extends javax.swing.JFrame {
                             .addComponent(lblTrainNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblBookingDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(26, 26, 26))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(361, 361, 361)
+                .addComponent(printTicketBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -943,9 +934,7 @@ public class BookingMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTotalCost2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(printTicketBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(roundedButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(printTicketBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -1360,7 +1349,6 @@ public class BookingMenu extends javax.swing.JFrame {
     private client.components.RoundedButton nav_schedule;
     private client.components.RoundedButton printTicketBtn;
     private client.components.RoundedButton resetBtn;
-    private client.components.RoundedButton roundedButton5;
     private client.components.RoundedPanel roundedPanel11;
     private client.components.RoundedPanel roundedPanel12;
     private client.components.RoundedPanel roundedPanel13;

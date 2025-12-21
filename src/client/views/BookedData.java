@@ -1,10 +1,13 @@
 package client.views;
 
+import client.components.ActionButtonEditor;
+import client.components.ActionButtonRenderer;
 import client.components.RoundedBorder;
 import server.sessions.UserSession;
 import java.awt.*;
 import javax.swing.table.DefaultTableModel;
 import server.controller.booked_data.LoadBookedData;
+import server.controller.booked_data.StatusCellRenderer;
 
 public class BookedData extends javax.swing.JFrame {
 
@@ -15,10 +18,22 @@ public class BookedData extends javax.swing.JFrame {
      */
     public BookedData() {
         initComponents();
-
+    
         DefaultTableModel model = LoadBookedData.getBookedData();
 
         booking_data.setModel(model);
+        
+        booking_data.getColumnModel()
+            .getColumn(3)
+            .setCellRenderer(new StatusCellRenderer());
+        
+        booking_data.getColumnModel()
+            .getColumn(8)
+            .setCellRenderer(new ActionButtonRenderer());
+
+        booking_data.getColumnModel()
+            .getColumn(8)
+            .setCellEditor(new ActionButtonEditor(booking_data));
 
         String namaAdmin = UserSession.getAdminName();
 
