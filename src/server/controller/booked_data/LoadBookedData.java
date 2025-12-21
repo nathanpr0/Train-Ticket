@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
 public class LoadBookedData {
@@ -22,16 +23,20 @@ public class LoadBookedData {
                     "Total Cost",
                     "Id Schedule",
                     "Id Admin",
-                    "Action"
+                    "Action" // ⬅ WAJIB ADA
                 }, 0
         ) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return column == 8; // hanya kolom button
+                return column == 8; // hanya kolom Action
+            }
+
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                return columnIndex == 8 ? JButton.class : String.class;
             }
         };
     }
-
 
     // GET ALL DATA
     public static DefaultTableModel getBookedData() {
@@ -39,9 +44,7 @@ public class LoadBookedData {
 
         String sql = "SELECT * FROM booking";
 
-        try (Connection conn = Koneksi.getConnection();
-                PreparedStatement ps = conn.prepareStatement(sql);
-                ResultSet rs = ps.executeQuery()) {
+        try (Connection conn = Koneksi.getConnection(); PreparedStatement ps = conn.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 model.addRow(new Object[]{
@@ -53,7 +56,7 @@ public class LoadBookedData {
                     rs.getString("total_cost"),
                     rs.getInt("id_schedule"),
                     rs.getString("id_admin"),
-                    "Print"
+                    new JButton() 
                 });
             }
 
@@ -73,17 +76,17 @@ public class LoadBookedData {
     ) {
 
         DefaultTableModel model = new DefaultTableModel(
-            new String[]{
-                "Booking Code",
-                "Name",
-                "Booking Date",
-                "Status",
-                "Additional Cost",
-                "Total Cost",
-                "Id Schedule",
-                "Id Admin",
-                "Action"
-            }, 0
+                new String[]{
+                    "Booking Code",
+                    "Name",
+                    "Booking Date",
+                    "Status",
+                    "Additional Cost",
+                    "Total Cost",
+                    "Id Schedule",
+                    "Id Admin",
+                    "Action"
+                }, 0
         ) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -91,31 +94,37 @@ public class LoadBookedData {
             }
         };
 
-
         // DEFAULT
         String orderBy = "";
         String orderType = "";
 
         // MAPPING ATAU PEMETAAN SORT BY UNTUK MENGUBAH PENULISAN VALUE NYA
         switch (sortBy) {
-            case "Booking Code" -> orderBy = "booking_code";
-            case "Name" -> orderBy = "name";
-            case "Booking Date" -> orderBy = "booking_date";
-            case "Status" -> orderBy = "status";
-            case "Additional Cost" -> orderBy = "additional_cost";
-            case "Total Cost" -> orderBy = "total_cost";
-            case "Id Schedule" -> orderBy = "id_schedule";
-            case "Id Admin" -> orderBy = "id_admin";
+            case "Booking Code" ->
+                orderBy = "booking_code";
+            case "Name" ->
+                orderBy = "name";
+            case "Booking Date" ->
+                orderBy = "booking_date";
+            case "Status" ->
+                orderBy = "status";
+            case "Additional Cost" ->
+                orderBy = "additional_cost";
+            case "Total Cost" ->
+                orderBy = "total_cost";
+            case "Id Schedule" ->
+                orderBy = "id_schedule";
+            case "Id Admin" ->
+                orderBy = "id_admin";
         }
 
         // PENGURUTAN DESCENDING ATAU ASCENDING UNTUK ORDER
         if ("Descending".equals(order)) {
             orderType = "DESC";
-        }else {
+        } else {
             orderType = "ASC";
         }
 
-        
         // MELAKUKAN SEARCH
         String sql = """
             SELECT * FROM booking
@@ -128,8 +137,7 @@ public class LoadBookedData {
                OR id_admin LIKE ?
             """ + " ORDER BY " + orderBy + " " + orderType;
 
-        try (Connection conn = Koneksi.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = Koneksi.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
             String key = "%" + keyword + "%";
 

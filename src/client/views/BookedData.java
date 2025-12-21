@@ -18,30 +18,30 @@ public class BookedData extends javax.swing.JFrame {
      */
     public BookedData() {
         initComponents();
-    
+
         DefaultTableModel model = LoadBookedData.getBookedData();
-
         booking_data.setModel(model);
-        
-        booking_data.getColumnModel()
-            .getColumn(3)
-            .setCellRenderer(new StatusCellRenderer());
-        
-        booking_data.getColumnModel()
-            .getColumn(8)
-            .setCellRenderer(new ActionButtonRenderer());
 
-        booking_data.getColumnModel()
-            .getColumn(8)
-            .setCellEditor(new ActionButtonEditor(booking_data));
+        setupTableAction();
 
         String namaAdmin = UserSession.getAdminName();
+        lblProfile.setText(
+                (namaAdmin == null || namaAdmin.isEmpty()) ? "Profile" : namaAdmin
+        );
+    }
 
-        if (namaAdmin == null || namaAdmin.isEmpty()) {
-            lblProfile.setText("Profile");
-        } else {
-            lblProfile.setText(namaAdmin);
-        }
+    private void setupTableAction() {
+        booking_data.getColumnModel()
+                .getColumn(3)
+                .setCellRenderer(new StatusCellRenderer());
+
+        booking_data.getColumnModel()
+                .getColumn(8)
+                .setCellRenderer(new ActionButtonRenderer());
+
+        booking_data.getColumnModel()
+                .getColumn(8)
+                .setCellEditor(new ActionButtonEditor(booking_data));
     }
 
     /**
@@ -309,6 +309,7 @@ public class BookedData extends javax.swing.JFrame {
         DefaultTableModel model = LoadBookedData.searchAndSortSchedule(keyword, sortBy, order);
 
         booking_data.setModel(model);
+        setupTableAction();
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void nav_bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nav_bookingActionPerformed

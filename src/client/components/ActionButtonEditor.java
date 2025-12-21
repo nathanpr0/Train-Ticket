@@ -38,24 +38,14 @@ public class ActionButtonEditor extends DefaultCellEditor {
             String bookingCode = table.getValueAt(row, 0).toString();
 
             try (Connection conn = Koneksi.getConnection()) {
+                InputBookingTicket ibt = new InputBookingTicket();
+                BookingSummary summary = ibt.getBookingSummary(conn, bookingCode);
 
-                InputBookingTicket booking = new InputBookingTicket();
-
-                // 🔥 Ambil summary lengkap dari database
-                BookingSummary summary = booking.getBookingSummary(conn, bookingCode);
-
-                // 🔥 Buka Receipt
-                Receipt receipt = new Receipt(summary);
-                receipt.setLocationRelativeTo(null);
-                receipt.setVisible(true);
-
+                Receipt r = new Receipt(summary);
+                r.setLocationRelativeTo(null);
+                r.setVisible(true);
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(
-                        null,
-                        ex.getMessage(),
-                        "Gagal membuka receipt",
-                        JOptionPane.ERROR_MESSAGE
-                );
+                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         });
     }

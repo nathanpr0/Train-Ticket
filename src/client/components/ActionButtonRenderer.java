@@ -15,7 +15,7 @@ public class ActionButtonRenderer extends JButton implements TableCellRenderer {
         setFocusPainted(false);
 
         setIcon(new ImageIcon(
-            ActionButtonRenderer.class.getResource("/img/icons8-print-25Black.png")
+                ActionButtonRenderer.class.getResource("/img/icons8-print-25Black.png")
         ));
     }
 
@@ -23,7 +23,6 @@ public class ActionButtonRenderer extends JButton implements TableCellRenderer {
     public Component getTableCellRendererComponent(
             JTable table, Object value, boolean isSelected,
             boolean hasFocus, int row, int column) {
-
         return this;
     }
 }
