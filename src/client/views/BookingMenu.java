@@ -22,6 +22,7 @@ public class BookingMenu extends javax.swing.JFrame {
     private Map<String, Integer> priceMap = new HashMap<>();
 
     private int selectedScheduleId = -1;
+    private BookingSummary currentSummary;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BookingMenu.class.getName());
 
     /**
@@ -265,7 +266,7 @@ public class BookingMenu extends javax.swing.JFrame {
         lblRoute = new javax.swing.JLabel();
         lblAdditionalCost2 = new javax.swing.JLabel();
         lblTotalCost2 = new javax.swing.JLabel();
-        roundedButton4 = new client.components.RoundedButton();
+        printTicketBtn = new client.components.RoundedButton();
         roundedButton5 = new client.components.RoundedButton();
         lblProfile = new javax.swing.JLabel();
         nav_admin = new client.components.RoundedButton();
@@ -808,11 +809,16 @@ public class BookingMenu extends javax.swing.JFrame {
         lblTotalCost2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTotalCost2.setText("-");
 
-        roundedButton4.setBackground(new java.awt.Color(68, 68, 68));
-        roundedButton4.setBorder(null);
-        roundedButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-print-25.png"))); // NOI18N
-        roundedButton4.setText("Print Ticket");
-        roundedButton4.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        printTicketBtn.setBackground(new java.awt.Color(68, 68, 68));
+        printTicketBtn.setBorder(null);
+        printTicketBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-print-25.png"))); // NOI18N
+        printTicketBtn.setText("Print Ticket");
+        printTicketBtn.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        printTicketBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printTicketBtnActionPerformed(evt);
+            }
+        });
 
         roundedButton5.setBackground(new java.awt.Color(255, 255, 255));
         roundedButton5.setBorder(new RoundedBorder(20, new Color(68,68,68), 1));
@@ -831,7 +837,7 @@ public class BookingMenu extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(130, 130, 130)
-                .addComponent(roundedButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(printTicketBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(roundedButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(130, 130, 130))
@@ -938,7 +944,7 @@ public class BookingMenu extends javax.swing.JFrame {
                         .addComponent(lblTotalCost2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(roundedButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(printTicketBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(roundedButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
@@ -1110,38 +1116,38 @@ public class BookingMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBookingNameActionPerformed
 
+    // MENGUBAH FORMAT HARGA MENJADI MATA UANG RUPIAH
+    private String formatRupiah(int value) {
+        return "Rp " + String.format("%,d", value).replace(',', '.');
+    }
+
     // UNTUK MENAMPILKAN SUMMARY DARI HASIL INPUT SESUDAH INSERT KE DATABASE
     private void showSummary(BookingSummary s) {
         lblFromStation.setText(s.getOrigin());
         lblDestination.setText(s.getDestination());
         lblBookingName1.setText(s.getBookingName());
         lblDate.setText(s.getDate());
-        lblCost.setText(String.valueOf(s.getCost()));
-        lblAdditionalCost1.setText(String.valueOf(s.getAdditionalCost()));
-        lblTotalCost1.setText(String.valueOf(s.getTotalCost()));
+
+        lblCost.setText(formatRupiah(s.getCost()));
+        lblAdditionalCost1.setText(formatRupiah(s.getAdditionalCost()));
+        lblTotalCost1.setText(formatRupiah(s.getTotalCost()));
     }
 
     //  UNTUK MENAMPILKAN TICKET RESERVATION INFORMATION DARI HASIL INPUT SESUDAH INSERT KE DATABASE 
     private void showTicketReservationInfo(BookingSummary s) {
         lblBookingCode.setText(s.getBookingCode());
-        
-        String status = s.getStatus();   // ambil status dari object
+
+        // MENGUBAH WARNA STATUS MENJADI HIJAU
+        String status = s.getStatus();
         lblStatus.setText(status);
-
-    if (status != null) {
-        if (status.equalsIgnoreCase("CONFIRMED")) {
-            lblStatus.setForeground(new Color(14, 173, 0)); // hijau
-            lblStatus.setFont(lblStatus.getFont().deriveFont(Font.BOLD));
-        } else if (status.equalsIgnoreCase("PENDING")) {
-            lblStatus.setForeground(new Color(68, 68, 68));
-            lblStatus.setFont(lblStatus.getFont().deriveFont(Font.PLAIN));
-        } else if (status.equalsIgnoreCase("CANCELLED")) {
-            lblStatus.setForeground(new Color(185, 0, 0));
-            lblStatus.setFont(lblStatus.getFont().deriveFont(Font.BOLD));
+        if (status != null) {
+            if (status.equalsIgnoreCase("CONFIRMED")) {
+                lblStatus.setForeground(new Color(14, 173, 0)); // hijau
+                lblStatus.setFont(lblStatus.getFont().deriveFont(Font.BOLD));
+            }
         }
-    }
-        lblBookingDate.setText(s.getDate());
 
+        lblBookingDate.setText(s.getDate());
         lblTrainNumber.setText(s.getTrainNumber());
         lblBookingName2.setText(s.getBookingName());
         lblClass.setText(s.getKelas());
@@ -1149,13 +1155,12 @@ public class BookingMenu extends javax.swing.JFrame {
         lblDepartureTime.setText(s.getDepartureTime());
         lblRoute.setText(s.getOrigin() + " - " + s.getDestination());
 
-        lblAdditionalCost2.setText(String.valueOf(s.getAdditionalCost()));
-        lblTotalCost2.setText(String.valueOf(s.getTotalCost()));
+        lblAdditionalCost2.setText(formatRupiah(s.getAdditionalCost()));
+        lblTotalCost2.setText(formatRupiah(s.getTotalCost()));
     }
 
 
     private void confirm_booking_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirm_booking_btnActionPerformed
-
         try {
             BookingValidation validasi = new BookingValidation();
             InputBookingTicket booking = new InputBookingTicket();
@@ -1167,7 +1172,7 @@ public class BookingMenu extends javax.swing.JFrame {
             String carriage = (String) cmbCarriage.getSelectedItem();
             String price = txtPrice.getText();
 
-            //  VALIDASI INPUT BILA KOSONG
+            // 1️⃣ VALIDASI INPUT
             validasi.cekInputKosong(
                     bookingName,
                     destination,
@@ -1177,29 +1182,28 @@ public class BookingMenu extends javax.swing.JFrame {
                     carriage
             );
 
-            //  AMBIL schedule_id
+            // 2️⃣ VALIDASI SCHEDULE
             if (!scheduleMap.containsKey(carriage)) {
                 throw new Exception("Schedule tidak valid!");
             }
+
             int selectedScheduleId = scheduleMap.get(carriage);
 
             try (Connection conn = Koneksi.getConnection()) {
 
-                //  INSERT BOOKING
+                // INSERT BOOKING
                 String bookingCode = booking.createBookingByScheduleId(
                         conn,
                         bookingName,
                         selectedScheduleId
                 );
 
-                //  AMBIL HASIL DATA YANG SUDAH DI INPUT
-                BookingSummary summary = booking.getBookingSummary(conn, bookingCode);
+                // AMBIL SUMMARY (INI KUNCI)
+                currentSummary = booking.getBookingSummary(conn, bookingCode);
 
-                // MENGIRMKAN HASIL DATA INPUT KE MENU SUMMARY
-                showSummary(summary);
-
-                // MENGIRIMKAN HASIL DATA INPUT KE TICKET RESERVATION INFORMATION
-                showTicketReservationInfo(summary);
+                // TAMPILKAN KE UI
+                showSummary(currentSummary);
+                showTicketReservationInfo(currentSummary);
 
                 JOptionPane.showMessageDialog(
                         this,
@@ -1207,21 +1211,23 @@ public class BookingMenu extends javax.swing.JFrame {
                 );
             }
 
-            //  RESET FORM
+            // RESET FORM INPUT (BUKAN SUMMARY)
             txtBookingName.setText("");
             txtPrice.setText("");
-
             cmbDestination.removeAllItems();
             cmbClass.removeAllItems();
             cmbDepartureTime.removeAllItems();
             cmbCarriage.removeAllItems();
-
             loadDestinationCombo();
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Peringatan", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(
+                    this,
+                    e.getMessage(),
+                    "Peringatan",
+                    JOptionPane.WARNING_MESSAGE
+            );
         }
-
     }//GEN-LAST:event_confirm_booking_btnActionPerformed
 
 
@@ -1250,6 +1256,17 @@ public class BookingMenu extends javax.swing.JFrame {
     private void cmbDestinationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDestinationActionPerformed
         loadClassCombo();
     }//GEN-LAST:event_cmbDestinationActionPerformed
+
+    private void printTicketBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printTicketBtnActionPerformed
+        if (currentSummary == null) {
+            JOptionPane.showMessageDialog(this,
+                    "Silakan confirm booking dulu!");
+            return;
+        }
+
+        Receipt receipt = new Receipt(currentSummary);
+        receipt.setVisible(true);
+    }//GEN-LAST:event_printTicketBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1341,8 +1358,8 @@ public class BookingMenu extends javax.swing.JFrame {
     private client.components.RoundedButton nav_admin;
     private client.components.RoundedButton nav_booked_data;
     private client.components.RoundedButton nav_schedule;
+    private client.components.RoundedButton printTicketBtn;
     private client.components.RoundedButton resetBtn;
-    private client.components.RoundedButton roundedButton4;
     private client.components.RoundedButton roundedButton5;
     private client.components.RoundedPanel roundedPanel11;
     private client.components.RoundedPanel roundedPanel12;

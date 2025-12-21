@@ -95,30 +95,38 @@ public class InputBookingTicket {
 
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, bookingCode);
-            ResultSet rs = ps.executeQuery();
 
-            if (!rs.next()) {
-                throw new SQLException("Booking tidak ditemukan!");
+            try (ResultSet rs = ps.executeQuery()) {
+
+                if (!rs.next()) {
+                    throw new SQLException("Booking tidak ditemukan!");
+                }
+
+                BookingSummary summary = new BookingSummary();
+
+                // ===== BOOKING =====
+                summary.setBookingCode(rs.getString("booking_code"));
+                summary.setBookingName(rs.getString("booking_name"));
+                summary.setStatus(rs.getString("status"));
+                summary.setDate(rs.getDate("booking_date").toString());
+
+                // ===== ROUTE =====
+                summary.setOrigin(rs.getString("origin"));
+                summary.setDestination(rs.getString("destination"));
+
+                // ===== TRAIN =====
+                summary.setTrainNumber(rs.getString("train_number"));
+                summary.setKelas(rs.getString("class"));
+                summary.setCarriages(rs.getInt("carriages"));
+                summary.setDepartureTime(rs.getString("departure_time"));
+
+                // ===== COST =====
+                summary.setCost(rs.getInt("price"));
+                summary.setAdditionalCost(rs.getInt("additional_cost"));
+                summary.setTotalCost(rs.getInt("total_cost"));
+
+                return summary;
             }
-
-            BookingSummary s = new BookingSummary();
-            s.setBookingCode(rs.getString("booking_code"));
-            s.setBookingName(rs.getString("booking_name"));
-            s.setStatus(rs.getString("status"));
-            s.setDate(rs.getDate("booking_date").toString());
-
-            s.setOrigin(rs.getString("origin"));
-            s.setDestination(rs.getString("destination"));
-            s.setTrainNumber(rs.getString("train_number"));
-            s.setKelas(rs.getString("class"));
-            s.setCarriages(rs.getInt("carriages"));
-            s.setDepartureTime(rs.getString("departure_time"));
-
-            s.setCost(rs.getInt("price"));
-            s.setAdditionalCost(rs.getInt("additional_cost"));
-            s.setTotalCost(rs.getInt("total_cost"));
-
-            return s;
         }
     }
 

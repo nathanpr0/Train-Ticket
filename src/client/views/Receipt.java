@@ -2,16 +2,77 @@ package client.views;
 
 import client.components.RoundedBorder;
 import java.awt.*;
+import server.models.BookingSummary;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+
+import java.awt.image.BufferedImage;
 
 public class Receipt extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Receipt.class.getName());
 
     /**
      * Creates new form Receipt
      */
+    private BookingSummary summary;
+
     public Receipt() {
         initComponents();
+    }
+
+    public Receipt(BookingSummary summary) {
+        this.summary = summary;
+        initComponents();
+        fillData();
+    }
+
+    private void fillData() {
+        lblBookingCode.setText(summary.getBookingCode());
+
+        // MENGUBAH WARNA STATUS MENJADI HIJAU
+        String status = summary.getStatus();
+        lblStatus.setText(status);
+        if (status != null) {
+            if (status.equalsIgnoreCase("CONFIRMED")) {
+                lblStatus.setForeground(new Color(14, 173, 0)); // hijau
+                lblStatus.setFont(lblStatus.getFont().deriveFont(Font.BOLD));
+            }
+        }
+
+        lblBookingDate.setText(summary.getDate());
+        lblTrainNumber.setText(summary.getTrainNumber());
+        lblBookingName.setText(summary.getBookingName());
+        lblClass.setText(summary.getKelas());
+        lblCarriages.setText(String.valueOf(summary.getCarriages()));
+        lblDepartureTime.setText(summary.getDepartureTime());
+        lblRoute.setText(
+                summary.getOrigin() + " - " + summary.getDestination()
+        );
+        lblPrice.setText(formatRupiah(summary.getCost()));
+        lblAdditionalCost.setText(formatRupiah(summary.getAdditionalCost()));
+        lblTotalCost.setText(formatRupiah(summary.getTotalCost()));
+
+        // MEMBUAT QRCODE & BARCODE
+        generateQRCode(summary.getBookingCode());
+    }
+
+    // MENGUBAH FORMAT HARGA MENJADI MATA UANG RUPIAH
+    private String formatRupiah(int value) {
+        return "Rp " + String.format("%,d", value).replace(',', '.');
+    }
+
+    private void generateQRCode(String text) {
+        try {
+            QRCodeWriter writer = new QRCodeWriter();
+            BitMatrix matrix = writer.encode(text, BarcodeFormat.QR_CODE, 150, 150);
+            BufferedImage image = MatrixToImageWriter.toBufferedImage(matrix);
+            lblQRCode.setText("");
+            lblQRCode.setIcon(new javax.swing.ImageIcon(image));
+        } catch (WriterException e) {
+        }
     }
 
     /**
@@ -40,23 +101,24 @@ public class Receipt extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         cumagaris2 = new javax.swing.JPanel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
+        lblBookingCode = new javax.swing.JLabel();
+        lblStatus = new javax.swing.JLabel();
+        lblBookingDate = new javax.swing.JLabel();
+        lblTrainNumber = new javax.swing.JLabel();
+        lblBookingName = new javax.swing.JLabel();
+        lblClass = new javax.swing.JLabel();
+        lblCarriages = new javax.swing.JLabel();
+        lblDepartureTime = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
+        lblAdditionalCost = new javax.swing.JLabel();
+        lblTotalCost = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblQRCode = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
+        lblRoute = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        lblPrice = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -154,45 +216,45 @@ public class Receipt extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jLabel29.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel29.setText("EC123456789");
+        lblBookingCode.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblBookingCode.setForeground(new java.awt.Color(68, 68, 68));
+        lblBookingCode.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblBookingCode.setText("-");
 
-        jLabel31.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(14, 173, 0));
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel31.setText("CONFIRMED");
+        lblStatus.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblStatus.setForeground(new java.awt.Color(68, 68, 68));
+        lblStatus.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblStatus.setText("-");
 
-        jLabel32.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel32.setText("03-10-2025");
+        lblBookingDate.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblBookingDate.setForeground(new java.awt.Color(68, 68, 68));
+        lblBookingDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblBookingDate.setText("-");
 
-        jLabel33.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel33.setText("1006DF");
+        lblTrainNumber.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblTrainNumber.setForeground(new java.awt.Color(68, 68, 68));
+        lblTrainNumber.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTrainNumber.setText("-");
 
-        jLabel34.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel34.setText("Yanto Abraham");
+        lblBookingName.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblBookingName.setForeground(new java.awt.Color(68, 68, 68));
+        lblBookingName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblBookingName.setText("-");
 
-        jLabel35.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel35.setText("Economy");
+        lblClass.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblClass.setForeground(new java.awt.Color(68, 68, 68));
+        lblClass.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblClass.setText("-");
 
-        jLabel36.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel36.setText("12");
+        lblCarriages.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblCarriages.setForeground(new java.awt.Color(68, 68, 68));
+        lblCarriages.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblCarriages.setText("-");
 
-        jLabel37.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel37.setText("06:30");
+        lblDepartureTime.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblDepartureTime.setForeground(new java.awt.Color(68, 68, 68));
+        lblDepartureTime.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblDepartureTime.setText("-");
 
         jLabel38.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(68, 68, 68));
@@ -202,33 +264,40 @@ public class Receipt extends javax.swing.JFrame {
         jLabel39.setForeground(new java.awt.Color(68, 68, 68));
         jLabel39.setText("Total Cost :");
 
-        jLabel40.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel40.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel40.setText("-");
+        lblAdditionalCost.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblAdditionalCost.setForeground(new java.awt.Color(68, 68, 68));
+        lblAdditionalCost.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblAdditionalCost.setText("-");
 
-        jLabel41.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel41.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel41.setText("Rp 3.000,00");
+        lblTotalCost.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblTotalCost.setForeground(new java.awt.Color(68, 68, 68));
+        lblTotalCost.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTotalCost.setText("-");
 
         jLabel42.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
         jLabel42.setForeground(new java.awt.Color(68, 68, 68));
         jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel42.setText("Thank You  For Using Our Service, Have A Pleasant Trip!");
 
-        jLabel1.setText("Barcode");
-
-        jLabel2.setText("Buat barcode juga");
+        lblQRCode.setText("Buat barcode juga");
 
         jLabel43.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(68, 68, 68));
         jLabel43.setText("Carriages :");
 
-        jLabel44.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel44.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel44.setText("Tangerang - Jakarta");
+        lblRoute.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblRoute.setForeground(new java.awt.Color(68, 68, 68));
+        lblRoute.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblRoute.setText("-");
+
+        jLabel40.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(68, 68, 68));
+        jLabel40.setText("Price :");
+
+        lblPrice.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblPrice.setForeground(new java.awt.Color(68, 68, 68));
+        lblPrice.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPrice.setText("-");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -243,6 +312,10 @@ public class Receipt extends javax.swing.JFrame {
                         .addContainerGap(287, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel40)
+                                .addGap(237, 237, 237)
+                                .addComponent(lblPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(cumagaris2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cumagaris, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
@@ -258,9 +331,9 @@ public class Receipt extends javax.swing.JFrame {
                                     .addComponent(jLabel23))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                                    .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblBookingCode, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                                    .addComponent(lblBookingDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel24)
@@ -271,30 +344,25 @@ public class Receipt extends javax.swing.JFrame {
                                     .addComponent(jLabel43))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel44, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)))
+                                    .addComponent(lblDepartureTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblCarriages, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblClass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblBookingName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblTrainNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblRoute, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel38)
                                     .addComponent(jLabel39))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))))
+                                    .addComponent(lblAdditionalCost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblTotalCost, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))))
                         .addGap(15, 15, 15))))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(248, 248, 248)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(201, 201, 201)
+                .addComponent(lblQRCode)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,39 +377,39 @@ public class Receipt extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(jLabel29))
+                    .addComponent(lblBookingCode))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
-                    .addComponent(jLabel31))
+                    .addComponent(lblStatus))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
-                    .addComponent(jLabel32))
+                    .addComponent(lblBookingDate))
                 .addGap(18, 18, 18)
                 .addComponent(cumagaris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
-                    .addComponent(jLabel33))
+                    .addComponent(lblTrainNumber))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
-                    .addComponent(jLabel34))
+                    .addComponent(lblBookingName))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
-                    .addComponent(jLabel35))
+                    .addComponent(lblClass))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel36)
+                    .addComponent(lblCarriages)
                     .addComponent(jLabel43))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel37)
+                        .addComponent(lblDepartureTime)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel44))
+                        .addComponent(lblRoute))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel27)
                         .addGap(18, 18, 18)
@@ -350,17 +418,19 @@ public class Receipt extends javax.swing.JFrame {
                 .addComponent(cumagaris2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel40)
+                    .addComponent(lblPrice))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel38)
-                    .addComponent(jLabel40))
+                    .addComponent(lblAdditionalCost))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel39)
-                    .addComponent(jLabel41))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                    .addComponent(lblTotalCost))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(lblQRCode)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
                 .addComponent(jLabel42)
                 .addGap(15, 15, 15))
         );
@@ -401,35 +471,14 @@ public class Receipt extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Receipt().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel cumagaris;
     private javax.swing.JPanel cumagaris2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -438,24 +487,27 @@ public class Receipt extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblAdditionalCost;
+    private javax.swing.JLabel lblBookingCode;
+    private javax.swing.JLabel lblBookingDate;
+    private javax.swing.JLabel lblBookingName;
+    private javax.swing.JLabel lblCarriages;
+    private javax.swing.JLabel lblClass;
+    private javax.swing.JLabel lblDepartureTime;
+    private javax.swing.JLabel lblPrice;
+    private javax.swing.JLabel lblQRCode;
+    private javax.swing.JLabel lblRoute;
+    private javax.swing.JLabel lblStatus;
+    private javax.swing.JLabel lblTotalCost;
+    private javax.swing.JLabel lblTrainNumber;
     private client.components.RoundedPanel roundedPanel1;
     // End of variables declaration//GEN-END:variables
 }
