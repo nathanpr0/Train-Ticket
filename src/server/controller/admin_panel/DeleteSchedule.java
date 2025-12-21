@@ -3,6 +3,7 @@ package server.controller.admin_panel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import server.sessions.UserSession;
 
 public class DeleteSchedule {
 
@@ -16,6 +17,11 @@ public class DeleteSchedule {
     // DELETE BY ID
     public void deleteByIdSchedule(Connection conn, String idSchedule)
             throws SQLException, Exception {
+
+        String adminId = UserSession.getAdminId();
+        if (adminId == null) {
+            throw new Exception("Session admin tidak ditemukan!");
+        }
 
         String sql = "DELETE FROM schedule WHERE id_schedule = ?";
 

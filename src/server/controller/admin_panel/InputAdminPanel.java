@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import server.sessions.UserSession;
 
 public class InputAdminPanel {
 
@@ -60,7 +61,12 @@ public class InputAdminPanel {
             String departure,
             int carriages,
             String kelas,
-            int harga) throws SQLException {
+            int harga) throws SQLException, Exception {
+
+        String adminId = UserSession.getAdminId();
+        if (adminId == null) {
+            throw new Exception("Session admin tidak ditemukan!");
+        }
 
         String sql = "INSERT INTO schedule "
                 + "(train_number, machinist, origin, destination, departure_time, carriages, class, price) "

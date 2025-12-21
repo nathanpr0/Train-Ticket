@@ -230,11 +230,11 @@ public class BookingMenu extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         lblFromStation = new javax.swing.JLabel();
         lblDestination = new javax.swing.JLabel();
-        lblBookingName = new javax.swing.JLabel();
+        lblBookingName1 = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
         lblCost = new javax.swing.JLabel();
-        lblAdditionalCost = new javax.swing.JLabel();
-        lblTotalCost = new javax.swing.JLabel();
+        lblAdditionalCost1 = new javax.swing.JLabel();
+        lblTotalCost1 = new javax.swing.JLabel();
         confirm_booking_btn = new client.components.RoundedButton();
         resetBtn = new client.components.RoundedButton();
         see_schedule_btn = new client.components.RoundedButton();
@@ -254,17 +254,17 @@ public class BookingMenu extends javax.swing.JFrame {
         jLabel53 = new javax.swing.JLabel();
         jPanel27 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel54 = new javax.swing.JLabel();
-        jLabel55 = new javax.swing.JLabel();
-        jLabel56 = new javax.swing.JLabel();
-        jLabel57 = new javax.swing.JLabel();
-        jLabel58 = new javax.swing.JLabel();
-        jLabel59 = new javax.swing.JLabel();
-        jLabel60 = new javax.swing.JLabel();
-        jLabel61 = new javax.swing.JLabel();
-        jLabel62 = new javax.swing.JLabel();
-        jLabel63 = new javax.swing.JLabel();
-        jLabel64 = new javax.swing.JLabel();
+        lblBookingCode = new javax.swing.JLabel();
+        lblStatus = new javax.swing.JLabel();
+        lblBookingDate = new javax.swing.JLabel();
+        lblTrainNumber = new javax.swing.JLabel();
+        lblBookingName2 = new javax.swing.JLabel();
+        lblClass = new javax.swing.JLabel();
+        lblCarriages = new javax.swing.JLabel();
+        lblDepartureTime = new javax.swing.JLabel();
+        lblRoute = new javax.swing.JLabel();
+        lblAdditionalCost2 = new javax.swing.JLabel();
+        lblTotalCost2 = new javax.swing.JLabel();
         roundedButton4 = new client.components.RoundedButton();
         roundedButton5 = new client.components.RoundedButton();
         roundedButton6 = new client.components.RoundedButton();
@@ -513,10 +513,10 @@ public class BookingMenu extends javax.swing.JFrame {
         lblDestination.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblDestination.setText("-");
 
-        lblBookingName.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        lblBookingName.setForeground(new java.awt.Color(68, 68, 68));
-        lblBookingName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblBookingName.setText("-");
+        lblBookingName1.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblBookingName1.setForeground(new java.awt.Color(68, 68, 68));
+        lblBookingName1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblBookingName1.setText("-");
 
         lblDate.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
         lblDate.setForeground(new java.awt.Color(68, 68, 68));
@@ -528,15 +528,15 @@ public class BookingMenu extends javax.swing.JFrame {
         lblCost.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblCost.setText("-");
 
-        lblAdditionalCost.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        lblAdditionalCost.setForeground(new java.awt.Color(68, 68, 68));
-        lblAdditionalCost.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblAdditionalCost.setText("-");
+        lblAdditionalCost1.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblAdditionalCost1.setForeground(new java.awt.Color(68, 68, 68));
+        lblAdditionalCost1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblAdditionalCost1.setText("-");
 
-        lblTotalCost.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        lblTotalCost.setForeground(new java.awt.Color(68, 68, 68));
-        lblTotalCost.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblTotalCost.setText("-");
+        lblTotalCost1.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblTotalCost1.setForeground(new java.awt.Color(68, 68, 68));
+        lblTotalCost1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTotalCost1.setText("-");
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
@@ -557,11 +557,11 @@ public class BookingMenu extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(lblFromStation, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblDestination, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblBookingName, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblBookingName1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblCost, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblAdditionalCost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTotalCost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblAdditionalCost1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTotalCost1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15))
             .addGroup(jPanel25Layout.createSequentialGroup()
                 .addContainerGap()
@@ -582,7 +582,7 @@ public class BookingMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
-                    .addComponent(lblBookingName))
+                    .addComponent(lblBookingName1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
@@ -596,11 +596,11 @@ public class BookingMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel32)
-                    .addComponent(lblAdditionalCost))
+                    .addComponent(lblAdditionalCost1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
-                    .addComponent(lblTotalCost))
+                    .addComponent(lblTotalCost1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -754,60 +754,60 @@ public class BookingMenu extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jLabel54.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel54.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel54.setText("-");
+        lblBookingCode.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblBookingCode.setForeground(new java.awt.Color(68, 68, 68));
+        lblBookingCode.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblBookingCode.setText("-");
 
-        jLabel55.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel55.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel55.setText("-");
+        lblStatus.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblStatus.setForeground(new java.awt.Color(68, 68, 68));
+        lblStatus.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblStatus.setText("-");
 
-        jLabel56.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel56.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel56.setText("-");
+        lblBookingDate.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblBookingDate.setForeground(new java.awt.Color(68, 68, 68));
+        lblBookingDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblBookingDate.setText("-");
 
-        jLabel57.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel57.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel57.setText("-");
+        lblTrainNumber.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblTrainNumber.setForeground(new java.awt.Color(68, 68, 68));
+        lblTrainNumber.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTrainNumber.setText("-");
 
-        jLabel58.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel58.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel58.setText("-");
+        lblBookingName2.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblBookingName2.setForeground(new java.awt.Color(68, 68, 68));
+        lblBookingName2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblBookingName2.setText("-");
 
-        jLabel59.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel59.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel59.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel59.setText("-");
+        lblClass.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblClass.setForeground(new java.awt.Color(68, 68, 68));
+        lblClass.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblClass.setText("-");
 
-        jLabel60.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel60.setText("-");
+        lblCarriages.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblCarriages.setForeground(new java.awt.Color(68, 68, 68));
+        lblCarriages.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblCarriages.setText("-");
 
-        jLabel61.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel61.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel61.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel61.setText("-");
+        lblDepartureTime.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblDepartureTime.setForeground(new java.awt.Color(68, 68, 68));
+        lblDepartureTime.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblDepartureTime.setText("-");
 
-        jLabel62.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel62.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel62.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel62.setText("-");
+        lblRoute.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblRoute.setForeground(new java.awt.Color(68, 68, 68));
+        lblRoute.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblRoute.setText("-");
 
-        jLabel63.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel63.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel63.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel63.setText("-");
+        lblAdditionalCost2.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblAdditionalCost2.setForeground(new java.awt.Color(68, 68, 68));
+        lblAdditionalCost2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblAdditionalCost2.setText("-");
 
-        jLabel64.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
-        jLabel64.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel64.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel64.setText("-");
+        lblTotalCost2.setFont(new java.awt.Font("Inter 18pt Black", 1, 12)); // NOI18N
+        lblTotalCost2.setForeground(new java.awt.Color(68, 68, 68));
+        lblTotalCost2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTotalCost2.setText("-");
 
         roundedButton4.setBackground(new java.awt.Color(68, 68, 68));
         roundedButton4.setBorder(null);
@@ -877,17 +877,17 @@ public class BookingMenu extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel55, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
-                                        .addComponent(jLabel54, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel60, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel61, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel62, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel59, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel63, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel64, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jLabel56, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel57, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel58, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                                        .addComponent(lblBookingCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblCarriages, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblDepartureTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblRoute, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblClass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblAdditionalCost2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblTotalCost2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(lblBookingDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblTrainNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblBookingName2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(26, 26, 26))
         );
         jPanel2Layout.setVerticalGroup(
@@ -904,11 +904,11 @@ public class BookingMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel42))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel54)
+                        .addComponent(lblBookingCode)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel55)
+                        .addComponent(lblStatus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel56)))
+                        .addComponent(lblBookingDate)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -926,17 +926,17 @@ public class BookingMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel51))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel57)
+                        .addComponent(lblTrainNumber)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel58)
+                        .addComponent(lblBookingName2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel59)
+                        .addComponent(lblClass)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel60)
+                        .addComponent(lblCarriages)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel61)
+                        .addComponent(lblDepartureTime)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel62)))
+                        .addComponent(lblRoute)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -946,9 +946,9 @@ public class BookingMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel53))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel63)
+                        .addComponent(lblAdditionalCost2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel64)))
+                        .addComponent(lblTotalCost2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(roundedButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1090,6 +1090,28 @@ public class BookingMenu extends javax.swing.JFrame {
         cmbDepartureTime.removeAllItems();
         cmbCarriage.removeAllItems();
 
+        // RESET SUMMARY
+        lblFromStation.setText("-");
+        lblDestination.setText("-");
+        lblBookingName1.setText("-");
+        lblDate.setText("-");
+        lblCost.setText(String.valueOf("-"));
+        lblAdditionalCost1.setText("-");
+        lblTotalCost1.setText("-");
+
+        // RESET TICKET RESERVATION INFORMATION 
+        lblBookingCode.setText("-");
+        lblStatus.setText("-");
+        lblBookingDate.setText("-");
+        lblTrainNumber.setText("-");
+        lblBookingName2.setText("-");
+        lblClass.setText("-");
+        lblCarriages.setText("-");
+        lblDepartureTime.setText("-");
+        lblRoute.setText("-");
+        lblAdditionalCost2.setText("-");
+        lblTotalCost2.setText("-");
+
         // LOAD ULANG DESTINATION (AWAL)
         loadDestinationCombo();
     }//GEN-LAST:event_resetBtnActionPerformed
@@ -1106,13 +1128,30 @@ public class BookingMenu extends javax.swing.JFrame {
     private void showSummary(BookingSummary s) {
         lblFromStation.setText(s.getOrigin());
         lblDestination.setText(s.getDestination());
-        lblBookingName.setText(s.getBookingName());
+        lblBookingName1.setText(s.getBookingName());
         lblDate.setText(s.getDate());
-
         lblCost.setText(String.valueOf(s.getCost()));
-        lblAdditionalCost.setText(String.valueOf(s.getAdditionalCost()));
-        lblTotalCost.setText(String.valueOf(s.getTotalCost()));
+        lblAdditionalCost1.setText(String.valueOf(s.getAdditionalCost()));
+        lblTotalCost1.setText(String.valueOf(s.getTotalCost()));
     }
+
+    //  UNTUK MENAMPILKAN TICKET RESERVATION INFORMATION DARI HASIL INPUT SESUDAH INSERT KE DATABASE 
+    private void showTicketReservationInfo(BookingSummary s) {
+        lblBookingCode.setText(s.getBookingCode());
+        lblStatus.setText(s.getStatus());
+        lblBookingDate.setText(s.getDate());
+
+        lblTrainNumber.setText(s.getTrainNumber());
+        lblBookingName2.setText(s.getBookingName());
+        lblClass.setText(s.getKelas());
+        lblCarriages.setText(String.valueOf(s.getCarriages()));
+        lblDepartureTime.setText(s.getDepartureTime());
+        lblRoute.setText(s.getOrigin() + " - " + s.getDestination());
+
+        lblAdditionalCost2.setText(String.valueOf(s.getAdditionalCost()));
+        lblTotalCost2.setText(String.valueOf(s.getTotalCost()));
+    }
+
 
     private void confirm_booking_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirm_booking_btnActionPerformed
 
@@ -1152,9 +1191,14 @@ public class BookingMenu extends javax.swing.JFrame {
                         selectedScheduleId
                 );
 
-                //  AMBIL & TAMPILKAN SUMMARY
+                //  AMBIL HASIL DATA YANG SUDAH DI INPUT
                 BookingSummary summary = booking.getBookingSummary(conn, bookingCode);
+
+                // MENGIRMKAN HASIL DATA INPUT KE MENU SUMMARY
                 showSummary(summary);
+
+                // MENGIRIMKAN HASIL DATA INPUT KE TICKET RESERVATION INFORMATION
+                showTicketReservationInfo(summary);
 
                 JOptionPane.showMessageDialog(
                         this,
@@ -1264,17 +1308,6 @@ public class BookingMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
-    private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
-    private javax.swing.JLabel jLabel63;
-    private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -1285,14 +1318,25 @@ public class BookingMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblAdditionalCost;
-    private javax.swing.JLabel lblBookingName;
+    private javax.swing.JLabel lblAdditionalCost1;
+    private javax.swing.JLabel lblAdditionalCost2;
+    private javax.swing.JLabel lblBookingCode;
+    private javax.swing.JLabel lblBookingDate;
+    private javax.swing.JLabel lblBookingName1;
+    private javax.swing.JLabel lblBookingName2;
+    private javax.swing.JLabel lblCarriages;
+    private javax.swing.JLabel lblClass;
     private javax.swing.JLabel lblCost;
     private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblDepartureTime;
     private javax.swing.JLabel lblDestination;
     private javax.swing.JLabel lblFromStation;
     private javax.swing.JLabel lblProfile;
-    private javax.swing.JLabel lblTotalCost;
+    private javax.swing.JLabel lblRoute;
+    private javax.swing.JLabel lblStatus;
+    private javax.swing.JLabel lblTotalCost1;
+    private javax.swing.JLabel lblTotalCost2;
+    private javax.swing.JLabel lblTrainNumber;
     private client.components.RoundedButton nav_admin;
     private client.components.RoundedButton nav_booked_data;
     private client.components.RoundedButton nav_schedule;

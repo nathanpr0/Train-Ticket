@@ -74,12 +74,19 @@ public class InputBookingTicket {
 
         String sql = """
         SELECT
+            b.booking_code,
             b.name AS booking_name,
+            b.status,
             b.booking_date,
             b.additional_cost,
             b.total_cost,
+
             s.origin,
             s.destination,
+            s.train_number,
+            s.class,
+            s.carriages,
+            s.departure_time,
             s.price
         FROM booking b
         JOIN schedule s ON b.id_schedule = s.id_schedule
@@ -94,16 +101,24 @@ public class InputBookingTicket {
                 throw new SQLException("Booking tidak ditemukan!");
             }
 
-            BookingSummary summary = new BookingSummary();
-            summary.setBookingName(rs.getString("booking_name"));
-            summary.setDate(rs.getDate("booking_date").toString());
-            summary.setOrigin(rs.getString("origin"));
-            summary.setDestination(rs.getString("destination"));
-            summary.setCost(rs.getInt("price"));
-            summary.setAdditionalCost(rs.getInt("additional_cost"));
-            summary.setTotalCost(rs.getInt("total_cost"));
+            BookingSummary s = new BookingSummary();
+            s.setBookingCode(rs.getString("booking_code"));
+            s.setBookingName(rs.getString("booking_name"));
+            s.setStatus(rs.getString("status"));
+            s.setDate(rs.getDate("booking_date").toString());
 
-            return summary;
+            s.setOrigin(rs.getString("origin"));
+            s.setDestination(rs.getString("destination"));
+            s.setTrainNumber(rs.getString("train_number"));
+            s.setKelas(rs.getString("class"));
+            s.setCarriages(rs.getInt("carriages"));
+            s.setDepartureTime(rs.getString("departure_time"));
+
+            s.setCost(rs.getInt("price"));
+            s.setAdditionalCost(rs.getInt("additional_cost"));
+            s.setTotalCost(rs.getInt("total_cost"));
+
+            return s;
         }
     }
 
