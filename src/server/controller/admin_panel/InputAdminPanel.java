@@ -53,6 +53,7 @@ public class InputAdminPanel {
     }
 
     // INSERT DATABASE
+// INSERT DATABASE + ID ADMIN
     public void inputDataSchedule(Connection conn,
             String trainNumber,
             String machinist,
@@ -63,14 +64,16 @@ public class InputAdminPanel {
             String kelas,
             int harga) throws SQLException, Exception {
 
+        // AMBIL SESSION ADMIN
         String adminId = UserSession.getAdminId();
         if (adminId == null) {
             throw new Exception("Session admin tidak ditemukan!");
         }
 
+        // INSERT DATA KE SCHEDULE
         String sql = "INSERT INTO schedule "
-                + "(train_number, machinist, origin, destination, departure_time, carriages, class, price) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                + "(train_number, machinist, origin, destination, departure_time, carriages, class, price, id_admin) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement pst = conn.prepareStatement(sql)) {
             pst.setString(1, trainNumber);
@@ -81,7 +84,9 @@ public class InputAdminPanel {
             pst.setInt(6, carriages);
             pst.setString(7, kelas);
             pst.setInt(8, harga);
+            pst.setString(9, adminId);
             pst.executeUpdate();
         }
     }
+
 }

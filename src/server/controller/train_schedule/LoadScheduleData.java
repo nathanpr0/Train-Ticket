@@ -22,7 +22,8 @@ public class LoadScheduleData {
                     "Departure Time",
                     "Carriages",
                     "Class",
-                    "Price"
+                    "Price",
+                    "Id Admin"
                 }, 0
         );
     }
@@ -47,7 +48,8 @@ public class LoadScheduleData {
                     rs.getString("departure_time"),
                     rs.getInt("carriages"),
                     rs.getString("class"),
-                    rs.getInt("price")
+                    rs.getInt("price"),
+                    rs.getString("id_admin")
                 });
             }
 
@@ -76,7 +78,8 @@ public class LoadScheduleData {
                     "Departure Time",
                     "Carriages",
                     "Class",
-                    "Price"
+                    "Price",
+                    "Id Admin"
                 }, 0
         );
 
@@ -95,6 +98,7 @@ public class LoadScheduleData {
             case "Carriages" -> orderBy = "carriages";
             case "Class" -> orderBy = "class";
             case "Price" -> orderBy = "price";
+            case "Id Admin" -> orderBy = "id_admin";
         }
 
         // PENGURUTAN DESCENDING ATAU ASCENDING UNTUK ORDER
@@ -115,6 +119,7 @@ public class LoadScheduleData {
                OR carriages LIKE ?
                OR class LIKE ?
                OR price = ?
+               OR id_admin = ?
             """ + " ORDER BY " + orderBy + " " + orderType;
 
         try (Connection conn = Koneksi.getConnection();
@@ -130,6 +135,7 @@ public class LoadScheduleData {
             ps.setString(6, key);
             ps.setString(7, key);
             ps.setString(8, keyword);
+            ps.setString(9, key);
 
             ResultSet rs = ps.executeQuery();
 
@@ -143,7 +149,8 @@ public class LoadScheduleData {
                     rs.getString("departure_time"),
                     rs.getInt("carriages"),
                     rs.getString("class"),
-                    rs.getInt("price")
+                    rs.getInt("price"),
+                    rs.getString("id_admin")
                 });
             }
 
