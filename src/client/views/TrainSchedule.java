@@ -125,7 +125,7 @@ public class TrainSchedule extends javax.swing.JFrame {
         });
 
         cmbSortBy.setBorder(null);
-        cmbSortBy.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Id Schedule", "Train Number", "Machinist", "Origin", "Destination", "Departure Time", "Carriages", "Class", "Price" }));
+        cmbSortBy.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Id Schedule", "Train Number", "Machinist", "Origin", "Destination", "Departure Time", "Carriages", "Class", "Price", "Id Admin" }));
 
         searchBtn.setBackground(new java.awt.Color(68, 68, 68));
         searchBtn.setText("Search");
